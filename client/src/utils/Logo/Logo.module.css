@@ -1,0 +1,19 @@
+@font-face {
+    font-family: 'Jomhuria'; 
+    src: url('../../assets/fonts/Jomhuria-Regular.ttf') format('ttf');
+  }
+
+  .logo {
+    color: #474444;
+    font-family: Jomhuria;
+    font-size: 5vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+@media screen and (max-width: 600px) {
+    .logo {
+        font-size: 15vw;
+    }
+}
