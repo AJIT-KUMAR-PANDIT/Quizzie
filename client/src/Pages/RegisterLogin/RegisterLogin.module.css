@@ -21,3 +21,37 @@
     align-items: center;
 }
 
+.activeButton {
+    border-radius: 10px;
+    background: #FFF;
+    box-shadow: 0px 0px 50px 0px rgba(0, 25, 255, 0.24);
+}
+
+.toggleBtn {
+    background-color: transparent;
+    width: 217px;
+    border: transparent solid 5px;
+
+    color: #474444;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.toggleContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.activeFormClass{
+    display: block;
+}
+
+.inactiveFormClass{
+    display: none;
+}
