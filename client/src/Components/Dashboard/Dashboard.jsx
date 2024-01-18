@@ -1,5 +1,6 @@
 import React from 'react'
 import CssDashboard from './Dashboard.module.css'
+import QuizTrendingShowButton from '../QuizTrendingShowButton/QuizTrendingShowButton'
 
 const Dashboard = () => {
     return (
@@ -7,7 +8,7 @@ const Dashboard = () => {
             <div className={CssDashboard.body}>
                 <div className={CssDashboard.container}>
                     <div className={CssDashboard.divGroup1}>
-                    <br/><br/><br/><br/><br/>
+                        <br /><br /><br /><br /><br />
                         <div className={CssDashboard.divGroup2}>
                             <div className={CssDashboard.totalQuiz}>
                                 <span>  <span className={CssDashboard.totalQuizNumber1}>12</span><span className={CssDashboard.totalQuizText1}>Quiz<br />Created </span></span>
@@ -20,11 +21,24 @@ const Dashboard = () => {
                             </div>
                         </div>
                     </div>
-                    <div>
-
-                    </div>
-                    <div>
-
+                    <div className={CssDashboard.divGroup3}>
+                        <div>
+                            <div className={CssDashboard.textHeading1}>Trending Quizs</div>
+                            <br/><br/>
+                        </div>
+                        <div className={CssDashboard.divGroup5}>
+                            <QuizTrendingShowButton />
+                            <QuizTrendingShowButton />
+                            <QuizTrendingShowButton />
+                            <QuizTrendingShowButton />
+                            <QuizTrendingShowButton />
+                            <QuizTrendingShowButton />
+                            <QuizTrendingShowButton />
+                            <QuizTrendingShowButton />
+                            <QuizTrendingShowButton />
+                            <QuizTrendingShowButton />
+                            <QuizTrendingShowButton />
+                        </div>
                     </div>
                 </div>
             </div>

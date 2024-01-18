@@ -2,6 +2,7 @@ import SideNav from '../../Components/SideNav/SideNav';
 import CssDashboardPage from './DashboardPage.module.css';
 import { useState } from 'react';
 import Dashboard from '../../Components/Dashboard/Dashboard';
+import Analytics from '../../Components/Analytics/Analytics';
 
 const DashboardPage = () => {
 
@@ -27,6 +28,27 @@ const DashboardPage = () => {
         }
     }
 
+
+
+
+
+
+    const data = [
+        { quizName: 'Quiz 1', createdOn: '2022-01-01', impression: 100 },
+        { quizName: 'Quiz 2', createdOn: '2022-01-02', impression: 150 },
+        { quizName: 'Quiz 1', createdOn: '2022-01-01', impression: 100 },
+        { quizName: 'Quiz 2', createdOn: '2022-01-02', impression: 150 },
+        { quizName: 'Quiz 1', createdOn: '2022-01-01', impression: 100 },
+        { quizName: 'Quiz 2', createdOn: '2022-01-02', impression: 150 },
+        { quizName: 'Quiz 1', createdOn: '2022-01-01', impression: 100 },
+        { quizName: 'Quiz 2', createdOn: '2022-01-02', impression: 150 },
+        { quizName: 'Quiz 1', createdOn: '2022-01-01', impression: 100 },
+        { quizName: 'Quiz 2', createdOn: '2022-01-02', impression: 150 },
+      ];
+
+
+
+
     return (
         <>
             <div className={CssDashboardPage.body}>
@@ -41,7 +63,8 @@ const DashboardPage = () => {
                     }
                     {
                         (activeBtn === 'analytics') ? 
-                        (<Dashboard />)
+                        (
+                        <Analytics data={data}/>)
                         : <></>
                     }
                     {

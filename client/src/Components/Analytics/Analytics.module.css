@@ -1,0 +1,77 @@
+.tableContainer {
+    width: 100%;
+}
+
+.size {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70vw;
+}
+
+.tableRow {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+}
+
+.heading {
+    border-radius: 10px;
+    background: #5076FF;
+    color: #F4F4F4;
+
+    color: #F4F4F4;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 40px;
+    /* 250% */
+}
+
+.even {
+    border-radius: 10px;
+    background: #B3C4FF;
+
+    color: #000;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 40px;
+}
+
+.odd {
+    background: #EDEDED;
+
+    color: #000;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 40px;
+}
+
+.noData {
+    color: red;
+    font-size: larger;
+}
+
+.textHeading1 {
+    color: #5076FF;
+    font-family: Poppins;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+
+    display: flex;
+    justify-content: center;
+
+}
+
+.containerOutside {
+    width: 100%;
+    margin-left: 10vw;
+}

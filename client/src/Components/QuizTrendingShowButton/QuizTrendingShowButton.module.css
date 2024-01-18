@@ -1,0 +1,45 @@
+.title {
+    color: #474444;
+    font-family: Poppins;
+    font-size: 23px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.number {
+    color: #FF5D01;
+    font-family: Poppins;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.timeStamp {
+    color: #60B84B;
+    font-family: Poppins;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.container {
+    border-radius: 5px;
+    background: #FFF;
+
+    width: 181px;
+    height: 62px;
+    flex-shrink: 0;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.innerContainer1{
+    display: flex;
+	justify-content: space-between;
+}
