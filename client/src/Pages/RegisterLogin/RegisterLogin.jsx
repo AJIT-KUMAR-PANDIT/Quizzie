@@ -20,7 +20,7 @@ const RegisterLogin = () => {
         <>
             <div className={CssRegisterLogin.body} >
                 <div className={CssRegisterLogin.container}>
-                    <Logo />
+                    <Logo size={"7vw"}/>
                     <br /><br /><br />
                     <div className={CssRegisterLogin.toggleContainer}>
                         <button

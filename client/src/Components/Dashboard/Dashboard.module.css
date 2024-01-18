@@ -1,0 +1,99 @@
+.body {
+    display: flex;
+    background: #EDEDED;
+    width: fit-content;
+    height: 100vh;
+}
+
+.divGroup1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 83vw;
+    height: 100vh;
+}
+
+.divGroup2 {
+    display: flex;
+    justify-content: space-between;
+    width: 70vw;
+    height: 100vh;
+}
+
+
+.totalQuiz , .totalQuestions  , .totalImpressions {
+    border-radius: 10px;
+    background: #FFF;
+
+    width: 295px;
+    height: 145px;
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-left: 51px;
+}
+
+.totalQuizNumber1 {
+    color: #FF5D01;
+    font-family: Poppins;
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.totalQuizText1 {
+    color: #FF5D01;
+    font-family: Poppins;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.totalQuestionsNumber1 {
+    color: #60B84B;
+    font-family: Poppins;
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.totalQuestionsText1 {
+    color: #60B84B;
+    font-family: Poppins;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.totalImpressionsNumber1 {
+    color: #5076FF;
+    font-family: Poppins;
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.totalImpressionsText1 {
+    color: #5076FF;
+    font-family: Poppins;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.container{
+    display: flex;
+	flex-direction: column;
+	align-items: center;
+    /* width: 83vw; */
+}

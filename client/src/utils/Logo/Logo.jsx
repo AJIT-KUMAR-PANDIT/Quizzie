@@ -1,9 +1,15 @@
 import CssLogo from './Logo.module.css'
 
-const Logo = () => {
+const Logo = ({size}) => {
+
+    const logoVar={
+        fontSize:`${size}`,
+    }
+    
   return (
     <>
-    <div className={CssLogo.logo}>QUIZZIE</div>
+
+    <div className={CssLogo.logo} style={logoVar}>QUIZZIE</div>
     </>
   )
 }

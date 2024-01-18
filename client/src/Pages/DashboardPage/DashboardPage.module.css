@@ -1,0 +1,6 @@
+.body{
+    display: flex;
+    background: #EDEDED;
+    width: 100vw;
+    height: 100vh;
+}

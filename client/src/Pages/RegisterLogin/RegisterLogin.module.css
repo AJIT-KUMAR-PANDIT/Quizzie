@@ -40,7 +40,7 @@
     line-height: normal;
 }
 
-.toggleContainer{
+.toggleContainer {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -48,10 +48,18 @@
     flex-wrap: wrap;
 }
 
-.activeFormClass{
+.activeFormClass {
     display: block;
 }
 
-.inactiveFormClass{
+.inactiveFormClass {
     display: none;
+}
+
+.signupForm
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
