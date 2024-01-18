@@ -17,7 +17,7 @@ const SideNav = ({onButtonClick}) => {
             <div className={CssSideNav.sideNav} >
                 <div>
                     <br/>
-                    <Logo size={"3vw"} />
+                    <Logo size={"51px"} />
                 </div>
                 <div className={CssSideNav.container} >
                     <div className={CssSideNav.buttons}>

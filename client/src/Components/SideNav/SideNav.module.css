@@ -67,14 +67,6 @@ button {
     flex-shrink: 0;
 }
 
-button:hover {
-    cursor: pointer;
-    background: wheat;
-
-    width: 176px;
-    height: 38px;
-    flex-shrink: 0;
-}
 .activeBtn {
     border-radius: 10px;
     background: #FFF;
