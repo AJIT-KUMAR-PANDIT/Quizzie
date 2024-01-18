@@ -1,5 +1,6 @@
 const Signup = require("../Models/SignUp");
 const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
 
 exports.SignUp = async (req, res) => {
     const { name, email, password, confirmPassword } = req.body;
@@ -18,14 +19,16 @@ exports.SignUp = async (req, res) => {
         });
     }
 
-    const newSignup = new Signup({
-        name,
-        email,
-        password,
-        confirmPassword
-    });
-
     try {
+        
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        const newSignup = new Signup({
+            name,
+            email,
+            password: hashedPassword,
+        });
+
         const savedSignup = await newSignup.save();
         res.status(200).json({
             status: 200,
