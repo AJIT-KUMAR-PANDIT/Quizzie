@@ -1,0 +1,16 @@
+# Node.js
+node_modules/
+
+# Logs
+logs
+*.log
+
+# Environment variables
+.env
+
+# Compiled binary addons (if any)
+build/
+
+# OS generated files
+.DS_Store
+Thumbs.db

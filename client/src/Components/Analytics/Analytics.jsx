@@ -16,7 +16,7 @@ const Analytics = ({ data }) => {
                     <div className={CssAnalytics.tableContainer}>
                         <div className={CssAnalytics.textHeading1}>Quiz Analysis<br /><br /></div>
                         <div style={{ overflowY: 'scroll' , height: '500px'}}>
-                            <div className={`${CssAnalytics.tableRow} ${CssAnalytics.heading}`}>
+                            <div className={`${CssAnalytics.tableRow} ${CssAnalytics.heading}`} style={{position: 'sticky', top: '0'}}>
                                 <div>S.No</div>
                                 <div>Quiz Name</div>
                                 <div>Created On</div>
