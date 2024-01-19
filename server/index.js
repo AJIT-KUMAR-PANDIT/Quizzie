@@ -15,10 +15,15 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-const { SignUp } = require('./src/controllers/Signup');
+const { SignUp, Login } = require('./src/routes/routes');
 
 app.get('/', (req, res) => {
-  res.send('Api is Healthy Up To Date');
+  res.json({ 
+  
+    status: 200,
+    message: 'Api is Healthy Up To Date'
+  
+  });
 });
 
 
@@ -28,6 +33,7 @@ app.get('/', (req, res) => {
 
 
 app.use('/signup',SignUp);
+app.use('/login',Login);
 
 
 
