@@ -15,7 +15,7 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-const { SignUp, Login } = require('./src/routes/routes');
+const { SignUp, Login } = require('./src/Routes/routes');
 
 app.get('/', (req, res) => {
   res.json({ 
