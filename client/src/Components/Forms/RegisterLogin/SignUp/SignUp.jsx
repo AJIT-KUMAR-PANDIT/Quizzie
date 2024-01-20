@@ -1,9 +1,20 @@
 import { useState } from 'react';
 import CssSignup from './SignUp.module.css';
 import axios from 'axios';
+import {Url} from '../../../../utils/URL/Url';
+import Loader from '../../../Loader/Loader';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 
 
 const SignUp = () => {
+
+    const [loading, setLoading] = useState(false);
+    // setuping url as base url
+    const basrUrl=Url();
+    
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -57,24 +68,23 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
+      setLoading(true);
       try {
-        const response = await axios.post(`https://quizziebackend-tei6.onrender.com/signup`, formData);
+        const response = await axios.post(`${basrUrl}/signup`, formData);
         console.log(response.data);
-        
-        // redirect
-
+        toast.success(response.data.message);
       } catch (error) {
         console.error(error.response.data);
-      
-
-        // error message
+        toast.error(error.response.data.message);
+      } finally {
+        setLoading(false);
       }
-
       console.log('Form submitted:', formData);
     } else {
       console.log('Form has errors. Please fix them.');
     }
   };
+  
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -84,6 +94,7 @@ const SignUp = () => {
 
   return (
     <>
+    {loading?<Loader/>:null}
       <form onSubmit={handleSubmit}>
         <div className={CssSignup.container}>
           <div>
@@ -145,6 +156,7 @@ const SignUp = () => {
           </button>
         </div>
       </form>
+      <ToastContainer />
     </>
   );
 };
