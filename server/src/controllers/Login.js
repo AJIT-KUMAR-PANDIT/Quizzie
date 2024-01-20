@@ -1,12 +1,12 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const SignUp = require('../Models/SignUp');
+const SignUpUser = require('../Models/SignUpUser');
 
 const Login = async (req, res) => {
     const { email, password } = req.body;
 
     try {
-        const user = await SignUp.findOne({ email });
+        const user = await SignUpUser.findOne({ email });
 
         if (!user) {
             return res.status(404).json({

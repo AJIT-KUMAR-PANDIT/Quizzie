@@ -1,4 +1,4 @@
-const Signup = require("../Models/SignUp");
+const SignSignUpUserup = require("../Models/SignUpUser");
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 
@@ -22,7 +22,7 @@ const SignUp = async (req, res) => {
 
     try {
 
-        if (await Signup.findOne({ email })) {
+        if (await SignUpUser.findOne({ email })) {
             return res.status(409).json({ 
                 status: 409,
                 message: "User already exists" 
@@ -31,18 +31,18 @@ const SignUp = async (req, res) => {
 
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        const newSignup = new Signup({
+        const newSignUpUser = new SignUpUser({
             name,
             email,
             password: hashedPassword,
         });
 
-        const savedSignup = await newSignup.save();
+        const savedSignUpUser = await newSignUpUser.save();
 
         res.status(200).json({
             status: 200,
             message: "User Created",
-            data: savedSignup,
+            data: savedSignUpUser,
         });
     } catch (err) {
         res.status(500).json({
