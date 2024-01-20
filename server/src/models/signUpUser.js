@@ -17,5 +17,5 @@ const Signup = new Schema({
     }
 });
 
-const SignUpUser = mongoose.model("SignUp", Signup);
-module.exports = SignUpUser;
+const signUpUser = mongoose.model("SignUp", Signup);
+module.exports = signUpUser;
