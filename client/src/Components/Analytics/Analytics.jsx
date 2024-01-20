@@ -36,9 +36,9 @@ const Analytics = ({ data }) => {
                                     <div>{row.quizName}</div>
                                     <div>{row.createdOn}</div>
                                     <div>{row.impression}</div>
-                                    <div><img src='assets/img/uil_edit.svg' /></div>
-                                    <div><img src='assets/img/material-symbols_delete.svg' /></div>
-                                    <div><img src='assets/img/material-symbols_share.svg' /></div>
+                                    <div><img src='assets/img/uil_edit.svg' alt='edit'/></div>
+                                    <div><img src='assets/img/material-symbols_delete.svg'  alt='delete'/></div>
+                                    <div><img src='assets/img/material-symbols_share.svg' alt='share'/></div>
                                     <div>Question Wise Analysis</div>
                                 </div>
                             ))}
