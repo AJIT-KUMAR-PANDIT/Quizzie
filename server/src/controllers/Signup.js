@@ -1,4 +1,4 @@
-const SignSignUpUserup = require("../Models/SignUpUser");
+const signUpUser = require("../Models/signUpUser");
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 
