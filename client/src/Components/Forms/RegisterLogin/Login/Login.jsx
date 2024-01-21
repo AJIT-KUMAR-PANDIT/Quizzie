@@ -1,13 +1,21 @@
 import React, { useState } from 'react';
 import CssLogin from './Login.module.css';
+import axios from 'axios';
+import Loader from '../../../Loader/Loader';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Url } from '../../../../utils/URL/Url';
 
 const Login = () => {
+  const baseUrl = Url();
+
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
 
   const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
 
   const validateForm = () => {
     let formIsValid = true;
@@ -32,18 +40,27 @@ const Login = () => {
     return formIsValid;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
-    
-
-
-
-
-
-
+      setLoading(true);
+      try {
+        const response = await axios.post(`${baseUrl}/login`, formData);
+        console.log(response.data);
+        toast.success(response.data.message);
+        localStorage.setItem('token', response.data.token);
 
         
+            window.location.href = '/dashboard';
+        
+
+
+      } catch (error) {
+        console.error(error.response.data);
+        toast.error(error.response.data.message);
+      } finally {
+        setLoading(false);
+      }
       console.log('Form submitted:', formData);
     } else {
       console.log('Form has errors. Please fix them.');
@@ -58,6 +75,7 @@ const Login = () => {
 
   return (
     <>
+      {loading ? <Loader /> : null}
       <form onSubmit={handleSubmit}>
         <div className={CssLogin.container}>
           <div>
@@ -93,6 +111,7 @@ const Login = () => {
           </button>
         </div>
       </form>
+      <ToastContainer />
     </>
   );
 };
