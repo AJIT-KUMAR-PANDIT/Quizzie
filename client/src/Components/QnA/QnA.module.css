@@ -1,0 +1,113 @@
+.bodyQnA {
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    flex-direction: column;
+    width: 100%;
+    padding: 5% 5% 5% 5%;
+}
+
+.buttonAdded {
+    color: #9F9F9F;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+
+    fill: #FFF;
+    filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.15));
+    border: 10px;
+    border-radius: 50%;
+    background: #FFF;
+
+    width: 51px;
+    height: 51px;
+}
+
+.crossIcon {
+    font-size: 15px;
+    position: absolute;
+    top: 15px;
+    cursor: pointer;
+}
+
+.text1 {
+    color: #9F9F9F;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+
+    position: absolute;
+    right: 15px;
+}
+
+.inputQuestion {
+    border-radius: 10px;
+    background: #FFF;
+    box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.15);
+    font-size: 20px;
+    width: 90%;
+    height: 51px;
+}
+
+.inputQuestion::placeholder {
+    color: #9F9F9F;
+    text-align: left;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.optionType {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+}
+
+.text2 {
+    color: #9F9F9F;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.radio1{
+    width: 19px;
+    height: 19px;
+    flex-shrink: 0;
+}
+
+.inputOption{
+    border-radius: 10px;
+background: #FFF;
+box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.15);
+font-size: 20px;
+}
+
+.inputOption::placeholder{
+    color: #9F9F9F;
+    text-align: left;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.active{
+    display: block;
+}
+
+.inactive{
+    display: none;
+}

@@ -6,7 +6,7 @@ import Analytics from '../../Components/Analytics/Analytics';
 import Modal from '../../Components/Modal/Modal';
 import QuizName from '../../Components/QuizName/QuizName';
 import ContextApiQuizModal from '../../ContextApi/QuizModal/ContextApiQuizModal';
-
+import QnA from '../../Components/QnA/QnA';
 
 const DashboardPage = () => {
 
@@ -14,13 +14,15 @@ const DashboardPage = () => {
     const [modalOpen, setModalOpen] = useState(false);
     
 
-    const { data: continueBtn } = useContext(ContextApiQuizModal);
+    const { data: continueBtn, updateData: setContinueBtn } = useContext(ContextApiQuizModal);
     
+
     const openModal = () => {
         setModalOpen(true);
     };
 
     const closeModal = () => {
+        setContinueBtn(false);
         setModalOpen(false);
     };
 
@@ -97,7 +99,7 @@ const DashboardPage = () => {
                             <Modal isOpen={modalOpen} onClose={closeModal} >
                                 {(continueBtn) ?
                                     (
-                                       <></>
+                                       <QnA/>
                                     )
                                     : (
                                         <QuizName closeButton={closeButton} />
