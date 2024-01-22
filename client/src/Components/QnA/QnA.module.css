@@ -111,3 +111,63 @@ font-size: 20px;
 .inactive{
     display: none;
 }
+
+.button3{
+    color: #FFF;
+font-family: Poppins;
+font-size: 21px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+
+border-radius: 10px;
+background: #60B84B;
+width: 40%;
+}
+
+.button3:hover{
+    color: #FFF;
+font-family: Poppins;
+font-size: 21px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+
+border-radius: 10px;
+background: #60B84B;
+width: 279px;
+}
+
+.button5{
+    color: #474444;
+    font-family: Poppins;
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;   
+border-radius: 10px;
+background: #FFF;
+box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.25);
+
+width: 40%;
+}
+
+.button5:hover{
+    color: #FFF;
+font-family: Poppins;
+font-size: 21px;
+font-style: normal;
+font-weight: 600;
+line-height: normal; 
+border-radius: 10px;
+background: #FF4B4B;   
+width: 279px;
+}
+
+.hide{
+    display: none;
+}
+
+.show{
+    display: block;
+}

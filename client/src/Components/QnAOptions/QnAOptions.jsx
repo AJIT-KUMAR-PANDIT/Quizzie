@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import CssQnAOptions from './QnAOptions.module.css';
-import CssQnA from '../QnA/QnA.module.css';
+
 const QnAOptions = () => {
   const [selectedOption, setSelectedOption] = useState('');
 
@@ -44,46 +44,6 @@ const QnAOptions = () => {
   return (
     <div className={CssQnAOptions.bodyQnAOptions}>
       <div>
-      <div>
-                    <input type="text" placeholder="Question" className={CssQnA.inputQuestion} />
-                    <br /><br />
-                    <div className={CssQnA.optionType}>
-                        <label className={CssQnA.text2}>Option Type </label>
-                        <label className={CssQnA.text2}>
-                            <input
-                                type="radio"
-                                value="Text"
-                                checked={selectedOption === 'Text'}
-                                onChange={handleOptionChange}
-                                className={CssQnA.radio1}
-                            />
-                            Text
-                        </label>
-                        <label className={CssQnA.text2}>
-                            <input
-                                type="radio"
-                                value="Image URL"
-                                checked={selectedOption === 'Image URL'}
-                                onChange={handleOptionChange}
-                                className={CssQnA.radio1}
-                            />
-                            Image URL
-                        </label>
-                        <label className={CssQnA.text2}>
-                            <input
-                                type="radio"
-                                value="Text & Image URL"
-                                checked={selectedOption === 'Text & Image URL'}
-                                onChange={handleOptionChange}
-                                className={CssQnA.radio1}
-                            />
-                            Text & Image URL
-                        </label>
-                    </div >
-                    <br />
-                </div>
-      </div>
-      <div>
         <div>
           {options.map((option) => (
             <div key={option.id} style={{ display: 'flex' }}>
@@ -108,15 +68,19 @@ const QnAOptions = () => {
                   className={`${CssQnAOptions.crossIcon} ${CssQnAOptions.crossButton}`}
                   onClick={() => handleDeleteOptionClick(option.id)}
                 >
-                  &#x2716;
-                </span>
+                  <img src="assets/img/material-symbols_delete.svg" alt="crossIcon" />
+                  </span>,<br />,<br />
+                
               )}
             </div>
           ))}
         </div>
+        <div className={CssQnAOptions.addButtonContainer}>
+        &nbsp;&nbsp;
         {options.length < 4 && (
-          <button onClick={handleAddOptionsClick}>Add More Options</button>
+          <button onClick={handleAddOptionsClick} className={CssQnAOptions.addButton}>Add option</button>
         )}
+        </div>
       </div>
     </div>
   );
