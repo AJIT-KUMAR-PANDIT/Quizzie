@@ -2,32 +2,24 @@ import React, { useState } from 'react';
 import CssQnA from './QnA.module.css';
 import QnAOptions from '../QnAOptions/QnAOptions';
 import Timer from '../Timer/Timer';
+import ImageOptions from '../ImageOptions/ImageOptions';
+import TextImageOptions from '../TextImageOptions/TextImageOptions';
 
 const QnA = () => {
     const [buttons, setButtons] = useState([1]);
-
-
-
-
     const [selectedOption, setSelectedOption] = useState('Text');
 
     const handleOptionChange = (event) => {
         setSelectedOption(event.target.value);
     };
 
-
-
-
-
     const handleImgClick = () => {
-        // Check if the current number of buttons is less than 5 before adding a new button
         if (buttons.length < 5) {
             setButtons(prevButtons => [...prevButtons, prevButtons.length + 1]);
         }
     };
 
     const handleDeleteButtonClick = (buttonNumber) => {
-        // Remove the clicked button
         setButtons(prevButtons => prevButtons.filter(btn => btn !== buttonNumber));
     };
 
@@ -35,7 +27,6 @@ const QnA = () => {
         <div className={CssQnA.bodyQnA}>
             <div>
                 <div style={{ display: 'flex' }}>
-                    {/* Render buttons dynamically */}
                     {buttons.map(buttonNumber => (
                         <div key={buttonNumber} className={CssQnA.buttonContainer}>
                             <button className={CssQnA.buttonAdded}>{buttonNumber}</button>
@@ -52,7 +43,6 @@ const QnA = () => {
                     <input type="text" placeholder="Question" className={CssQnA.inputQuestion} />
                     <br /><br />
                     <div className={CssQnA.optionType}>
-                        <label className={CssQnA.text2}>Option Type </label>
                         <label className={CssQnA.text2}>
                             <input
                                 type="radio"
@@ -60,6 +50,7 @@ const QnA = () => {
                                 checked={selectedOption === 'Text'}
                                 onChange={handleOptionChange}
                                 className={CssQnA.radio1}
+                                id='radio1'
                             />
                             Text
                         </label>
@@ -70,6 +61,7 @@ const QnA = () => {
                                 checked={selectedOption === 'Image URL'}
                                 onChange={handleOptionChange}
                                 className={CssQnA.radio1}
+                                id='radio2'
                             />
                             Image URL
                         </label>
@@ -80,36 +72,46 @@ const QnA = () => {
                                 checked={selectedOption === 'Text & Image URL'}
                                 onChange={handleOptionChange}
                                 className={CssQnA.radio1}
+                                id='radio3'
                             />
                             Text & Image URL
                         </label>
                     </div >
                     <br />
                 </div>
-                <div id='qNaOptions' style={{ display: 'flex', justifyContent: 'space-between', width: '90%' }} className={`${selectedOption === 'text' ? CssQnA.show : CssQnA.hide}`}>
-                    <div>
-                        <QnAOptions />
+
+                {selectedOption === 'Text' && (
+                    <div id='qNaOptions' style={{ display: 'flex', justifyContent: 'space-between', width: '90%' }}>
+                        <div>
+                            <QnAOptions />
+                        </div>
+                        <div>
+                            <Timer />
+                        </div>
                     </div>
-                    <div>
-                        <Timer />
+                )}
+
+                {selectedOption === 'Image URL' && (
+                    <div id='qNaImage' style={{ display: 'flex', justifyContent: 'space-between', width: '90%' }}>
+                        <div>
+                            <ImageOptions />
+                        </div>
+                        <div>
+                            <Timer />
+                        </div>
                     </div>
-                </div>
-                <div id='qNaOptions' style={{ display: 'flex', justifyContent: 'space-between', width: '90%' }} className={`${selectedOption === 'text' ? CssQnA.show : CssQnA.hide}`}>
-                    <div>
-                        <QnAOptions />
+                )}
+
+                {selectedOption === 'Text & Image URL' && (
+                    <div id='qNaTimg' style={{ display: 'flex', justifyContent: 'space-between', width: '90%' }}>
+                        <div>
+                            <TextImageOptions />
+                        </div>
+                        <div>
+                            <Timer />
+                        </div>
                     </div>
-                    <div>
-                        <Timer />
-                    </div>
-                </div>
-                <div id='qNaOptions' style={{ display: 'flex', justifyContent: 'space-between', width: '90%' }} className={`${selectedOption === 'text' ? CssQnA.show : CssQnA.hide}`}>
-                    <div>
-                        <QnAOptions />
-                    </div>
-                    <div>
-                        <Timer />
-                    </div>
-                </div> 
+                )}
 
                 <br />
                 <div style={{ display: 'flex', justifyContent: 'space-between', width: '90%' }}>
