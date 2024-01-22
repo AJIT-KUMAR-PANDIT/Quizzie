@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import CssQnA from './QnA.module.css';
 import QnAOptions from '../QnAOptions/QnAOptions';
 import Timer from '../Timer/Timer';
 import ImageOptions from '../ImageOptions/ImageOptions';
 import TextImageOptions from '../TextImageOptions/TextImageOptions';
+import ContextModalClose from '../../ContextApi/ContextModalClose/ContextModalClose';
 
 const QnA = () => {
+    const { updateclose } = useContext(ContextModalClose);
     const [buttons, setButtons] = useState([1]);
     const [selectedOption, setSelectedOption] = useState('Text');
 
@@ -115,7 +117,7 @@ const QnA = () => {
 
                 <br />
                 <div style={{ display: 'flex', justifyContent: 'space-between', width: '90%' }}>
-                    <button className={CssQnA.button5}> Cancel</button>
+                    <button className={CssQnA.button5} onClick={() =>updateclose(false)}> Cancel</button>
                     <button className={CssQnA.button3}> Create Quiz</button>
                 </div>
             </div>

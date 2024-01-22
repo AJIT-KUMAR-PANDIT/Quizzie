@@ -49,6 +49,7 @@
     background: #FFF;
     box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.15);
 
+    width: 177px;
     height: 41px;
     flex-shrink: 0;
 }

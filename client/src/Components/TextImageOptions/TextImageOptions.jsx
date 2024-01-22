@@ -56,38 +56,42 @@ const TextImageOptions = () => {
                 id={`radio${option.id}`}
               />
               <input
-                id={`input${option.id}`}
+                id={`inputText${option.id}`}
                 type="text"
-                placeholder={`Option ${option.id}`}
+                placeholder={`Text ${option.id}`}
                 className={`${CssTextImageOptions.inputOption} ${option.selected ? CssTextImageOptions.selected : ''}`}
                 value={option.text}
                 onChange={(e) => handleOptionTextChange(option.id, e.target.value)}
               />
+              &nbsp;&nbsp;&nbsp;
               <input
-                id={`input${option.id}`}
+                id={`inputImage${option.id}`}
                 type="text"
-                placeholder={`Option ${option.id}`}
+                placeholder={`IMAGE URL ${option.id}`}
                 className={`${CssTextImageOptions.inputOption} ${option.selected ? CssTextImageOptions.selected : ''}`}
                 value={option.text}
                 onChange={(e) => handleOptionTextChange(option.id, e.target.value)}
               />
               {options.length > 2 && option.id > 2 && (
-                <span
-                  className={`${CssTextImageOptions.crossIcon} ${CssTextImageOptions.crossButton}`}
-                  onClick={() => handleDeleteOptionClick(option.id)}
-                >
-                  <img src="assets/img/material-symbols_delete.svg" alt="crossIcon" />
-                  </span>,<br />,<br />
-                
+                <div>
+                  <span
+                    className={`${CssTextImageOptions.crossIcon} ${CssTextImageOptions.crossButton}`}
+                    onClick={() => handleDeleteOptionClick(option.id)}
+                  >
+                    <img src="assets/img/material-symbols_delete.svg" alt="crossIcon" />
+                  </span>
+                  <br />
+                  <br />
+                </div>
               )}
             </div>
           ))}
         </div>
         <div className={CssTextImageOptions.addButtonContainer}>
-        &nbsp;&nbsp;
-        {options.length < 4 && (
-          <button onClick={handleAddOptionsClick} className={CssTextImageOptions.addButton}>Add option</button>
-        )}
+          &nbsp;&nbsp;
+          {options.length < 4 && (
+            <button onClick={handleAddOptionsClick} className={CssTextImageOptions.addButton}>Add option</button>
+          )}
         </div>
       </div>
     </div>

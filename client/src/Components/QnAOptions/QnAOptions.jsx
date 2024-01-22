@@ -69,17 +69,20 @@ const QnAOptions = () => {
                   onClick={() => handleDeleteOptionClick(option.id)}
                 >
                   <img src="assets/img/material-symbols_delete.svg" alt="crossIcon" />
-                  </span>,<br />,<br />
-                
+                </span>
               )}
+              <br />
+              <br />
             </div>
           ))}
         </div>
         <div className={CssQnAOptions.addButtonContainer}>
-        &nbsp;&nbsp;
-        {options.length < 4 && (
-          <button onClick={handleAddOptionsClick} className={CssQnAOptions.addButton}>Add option</button>
-        )}
+          &nbsp;&nbsp;
+          {options.length < 4 && (
+            <button onClick={handleAddOptionsClick} className={CssQnAOptions.addButton}>
+              Add option
+            </button>
+          )}
         </div>
       </div>
     </div>
