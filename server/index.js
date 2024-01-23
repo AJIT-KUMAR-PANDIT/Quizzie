@@ -15,7 +15,7 @@ const MONGODB_URL = process.env.MONGODB_URL;
 
 
 const bodyParser = require('body-parser');
-const { login, signUp } = require('./src/routes/routes');
+const routes = require('./src/routes/routes');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -36,8 +36,7 @@ app.get('/', (req, res) => {
 
 
 
-app.use('/signUp',signUp);
-app.use('/login',login);
+app.use('/', routes); 
 
 
 
