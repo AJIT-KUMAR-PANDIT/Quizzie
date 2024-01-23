@@ -4,6 +4,7 @@ import RegisterLogin from './Pages/RegisterLogin/RegisterLogin';
 import DashboardPage from './Pages/DashboardPage/DashboardPage';
 import ProviderQuizModal from './ContextApi/QuizModal/ProviderQuizModal';
 import ProviderModalClose from './ContextApi/ContextModalClose/ProviderModalClose';
+import TakeQuiz from './Pages/TakeQuiz/TakeQuiz';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
               <Routes>
                 <Route path="/" element={<RegisterLogin />} />
                 <Route path="/dashboard" element={<DashboardPage />} />
+                <Route path="/quiz" element={<TakeQuiz/>} />
               </Routes>
             </Router>
         </ProviderModalClose>
