@@ -92,3 +92,7 @@
     background-color: #60B84B;
     color: #FFF;
 }
+
+.inactive{
+    display: none;
+}

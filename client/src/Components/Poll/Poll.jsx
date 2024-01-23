@@ -1,7 +1,6 @@
 import React, { useState, useContext } from 'react';
 import CssPoll from './Poll.module.css';
 import PollOptions from '../PollOptions/PollOptions';
-import Timer from '../Timer/Timer';
 import ImageOptions from '../ImageOptions/ImageOptions';
 import TextImageOptions from '../TextImageOptions/TextImageOptions';
 import ContextModalClose from '../../ContextApi/ContextModalClose/ContextModalClose';
@@ -42,7 +41,7 @@ const Poll = () => {
                             )}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </div>
                     ))}
-                    <img src="assets/img/Poll+.svg" alt="Poll" onClick={handleImgClick} />
+                    <img src="assets/img/QnA+.svg" alt="Poll" onClick={handleImgClick} />
                     <div className={CssPoll.text1}>Max 5 questions</div>
                 </div>
                 <br />
@@ -93,7 +92,6 @@ const Poll = () => {
                             <PollOptions />
                         </div>
                         <div>
-                            <Timer />
                         </div>
                     </div>
                 )}
@@ -104,7 +102,6 @@ const Poll = () => {
                             <ImageOptions />
                         </div>
                         <div>
-                            <Timer />
                         </div>
                     </div>
                 )}
@@ -115,7 +112,6 @@ const Poll = () => {
                             <TextImageOptions />
                         </div>
                         <div>
-                            <Timer />
                         </div>
                     </div>
                 )}

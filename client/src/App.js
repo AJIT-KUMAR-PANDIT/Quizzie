@@ -11,11 +11,11 @@ function App() {
       <ProviderQuizModal>
         <ProviderModalClose>
           <Router>
-            <Routes>
-              <Route path="/" element={<RegisterLogin />} />
-              <Route path="/dashboard" element={<DashboardPage />} />
-            </Routes>
-          </Router>
+              <Routes>
+                <Route path="/" element={<RegisterLogin />} />
+                <Route path="/dashboard" element={<DashboardPage />} />
+              </Routes>
+            </Router>
         </ProviderModalClose>
       </ProviderQuizModal>
     </>

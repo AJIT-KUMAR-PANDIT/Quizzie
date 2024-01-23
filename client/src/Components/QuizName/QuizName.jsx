@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import CssQuizName from './QuizName.module.css';
 import ContextApiQuizModal from '../../ContextApi/QuizModal/ContextApiQuizModal';
-import Poll from '../Poll/Poll'; // Import your Poll component
+import Poll from '../Poll/Poll';
 
 const QuizName = ({ closeButton, Continue }) => {
   const [isQABtnActive, setIsQABtnActive] = useState('Q & A');
@@ -10,22 +10,24 @@ const QuizName = ({ closeButton, Continue }) => {
 
   const { updateData } = useContext(ContextApiQuizModal);
 
+
+  
   const handleQABtnToggle = () => {
     setIsQABtnActive(true);
     setIsPollTBtnActive(false);
-    setShowPoll(false); // Hide Poll component when Q & A button is clicked
+    setShowPoll(false); // Hide the Poll component
   };
 
   const handlePollTBtnToggle = () => {
     setIsPollTBtnActive(true);
     setIsQABtnActive(false);
-    setShowPoll(true); // Show Poll component when Poll Type button is clicked
+    setShowPoll(true);
   };
 
   const handleClose = () => {
     setIsQABtnActive(false);
     setIsPollTBtnActive(false);
-    setShowPoll(false); // Hide Poll component when closing the modal
+    setShowPoll(false);
     closeButton();
   };
 
@@ -36,35 +38,36 @@ const QuizName = ({ closeButton, Continue }) => {
   return (
     <div className={CssQuizName.container}>
       <div>
-        <input type="text" placeholder="   Quiz Name" className={CssQuizName.input} />
+        <input type="text" placeholder="   Quiz Name" className={`${CssQuizName.input} ${showPoll ? CssQuizName.inactive : ''}`} />
         <br />
         <br />
-        <label className={CssQuizName.labelQuizT}>Quiz Type</label>
+        <label className={`${CssQuizName.labelQuizT}  ${showPoll ? CssQuizName.inactive : ''}`}>Quiz Type</label>
         <button
-          className={`${CssQuizName.qAbtn} ${isQABtnActive ? CssQuizName.activeBtn : ''}`}
+          className={`${CssQuizName.qAbtn} ${isQABtnActive ? CssQuizName.activeBtn : ''}  ${showPoll ? CssQuizName.inactive : ''}`}
           onClick={handleQABtnToggle}
         >
           Q & A
         </button>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <button
-          className={`${CssQuizName.pollTbtn} ${isPollTBtnActive ? CssQuizName.activeBtn : ''}`}
+          className={`${CssQuizName.pollTbtn} ${isPollTBtnActive ? CssQuizName.activeBtn : ''}  ${showPoll ? CssQuizName.inactive : ''}`}
           onClick={handlePollTBtnToggle}
         >
           Poll Type
         </button>
         <br />
         <br />
+
         
-        {showPoll && <Poll />} {/* Render the Poll component when showPoll is true */}
-        
+        {showPoll && <Poll />} 
+
         <br />
         <br />
-        <button className={CssQuizName.cancelbtn} onClick={handleClose}>
+        <button className={`${CssQuizName.cancelbtn}  ${showPoll ? CssQuizName.inactive : ''}`} onClick={handleClose}>
           Cancel
         </button>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{' '}
-        <button className={CssQuizName.continuebtn} onClick={handleContinue}>
+        <button className={`${CssQuizName.continuebtn }  ${showPoll ? CssQuizName.inactive : ''}`} onClick={handleContinue}>
           Continue
         </button>
       </div>
