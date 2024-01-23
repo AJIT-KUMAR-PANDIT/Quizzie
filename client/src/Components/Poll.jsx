@@ -1,10 +1,9 @@
 import React, { useState, useContext } from 'react';
 import CssPoll from './Poll.module.css';
 import PollOptions from '../PollOptions/PollOptions';
-import ImagePollOptions from '../ImagePollOptions/ImagePollOptions';
-import TextImagePollOptions from '../TextImagePollOptions/TextImagePollOptions';
+import ImageOptions from '../ImageOptions/ImageOptions';
+import TextImageOptions from '../TextImageOptions/TextImageOptions';
 import ContextModalClose from '../../ContextApi/ContextModalClose/ContextModalClose';
-
 
 const Poll = () => {
     const { updateClose } = useContext(ContextModalClose);
@@ -47,7 +46,7 @@ const Poll = () => {
                 </div>
                 <br />
                 <div>
-                    <input type="text" placeholder="Poll Question" className={CssPoll.inputQuestion} />
+                    <input type="text" placeholder="Question" className={CssPoll.inputQuestion} />
                     <br /><br />
                     <div className={CssPoll.optionType}>
                         <label className={CssPoll.text2}>
@@ -92,7 +91,7 @@ const Poll = () => {
                         <div>
                             <PollOptions />
                         </div>
-                        <div style={{ width: '91px' , height: '91px' }}>
+                        <div>
                         </div>
                     </div>
                 )}
@@ -100,9 +99,9 @@ const Poll = () => {
                 {selectedOption === 'Image URL' && (
                     <div id='PollImage' style={{ display: 'flex', justifyContent: 'space-between', width: '90%' }}>
                         <div>
-                            <ImagePollOptions />
+                            <ImageOptions />
                         </div>
-                        <div style={{ width: '91px' , height: '91px' }}>
+                        <div>
                         </div>
                     </div>
                 )}
@@ -110,9 +109,9 @@ const Poll = () => {
                 {selectedOption === 'Text & Image URL' && (
                     <div id='PollTimg' style={{ display: 'flex', justifyContent: 'space-between', width: '90%' }}>
                         <div>
-                            <TextImagePollOptions />
+                            <TextImageOptions />
                         </div>
-                        <div style={{ width: '91px' , height: '91px' }}>
+                        <div>
                         </div>
                     </div>
                 )}
@@ -120,7 +119,7 @@ const Poll = () => {
                 <br />
                 <div style={{ display: 'flex', justifyContent: 'space-between', width: '90%' }}>
                     <button className={CssPoll.button5} onClick={handleCancelClick}>Cancel</button>
-                    <button className={CssPoll.button3}> Create Poll</button>
+                    <button className={CssPoll.button3}> Create Quiz</button>
                 </div>
             </div>
         </div>

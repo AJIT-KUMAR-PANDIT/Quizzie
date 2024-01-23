@@ -1,0 +1,95 @@
+.radio1 {
+    width: 19px;
+    height: 19px;
+    accent-color: #60B84B;
+    border: #D9D9D9 solid 3px;
+}
+
+
+.radio1::placeholder {
+    color: #9F9F9F;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+
+    width: 673px;
+    height: 51px;
+    flex-shrink: 0;
+}
+
+.addButton {
+    border-radius: 10px;
+    background: #FFF;
+    box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.15);
+
+    color: #9F9F9F;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+
+    width: 90%;
+    height: 41px;
+    flex-shrink: 0;
+}
+
+.addButtonContainer{
+    display: flex;
+    justify-content: center;
+}
+
+.inputOption {
+    flex-shrink: 0;
+    font-size: 20px;
+    border-radius: 10px;
+background: #FFF;
+box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.15);
+
+height: 41px;
+flex-shrink: 0;
+}
+
+.inputOption input {
+    width: 673px;
+    height: 50px;
+    flex-shrink: 0;
+    font-size: 20px;
+}
+
+.inputOption::placeholder {
+    color: #9F9F9F;
+    text-align: left;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+
+
+
+
+    height: 41px;
+    flex-shrink: 0;
+
+}
+
+.selected {
+    border-radius: 10px;
+    background: #60B84B;
+    box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.15);
+color: #FFF;
+ font-size: 20;
+    height: 41px;
+    flex-shrink: 0;
+}
+
+.selected::placeholder {
+    border-radius: 10px;
+    background: #60B84B;
+    box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.15);
+    color: #FFF;
+}
