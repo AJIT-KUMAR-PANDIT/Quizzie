@@ -11,28 +11,24 @@ import ContextModalClose from '../../ContextApi/ContextModalClose/ContextModalCl
 
 const DashboardPage = () => {
 
-    const { close: onCloseq , updateClose: updateCloseq } = useContext(ContextModalClose);
+    const { close: onCloseq, updateClose: updateCloseq } = useContext(ContextModalClose);
 
     const [modalOpen, setModalOpen] = useState(false);
-    
+
 
     const { data: continueBtn, updateData: setContinueBtn } = useContext(ContextApiQuizModal);
-    
+
 
     const openModal = () => {
-        
-        if(onCloseq===false){
-            setModalOpen(false);
-        }else{
-            setModalOpen(true); 
-        }
-        
+        setModalOpen(prevState => !prevState);
+
+        updateCloseq(true);
     };
 
     const closeModal = () => {
         setContinueBtn(false);
-        setModalOpen(false);
-        updateCloseq(true);
+        setModalOpen(prevState => !prevState);
+        updateCloseq(prevState => !prevState);
     };
 
 
@@ -50,7 +46,7 @@ const DashboardPage = () => {
                 break;
             case 'createQuiz':
                 // setActiveBtn(buttonName);
-                openModal(); 
+                openModal();
                 break;
             case 'logout':
                 setActiveBtn(buttonName);
@@ -61,7 +57,7 @@ const DashboardPage = () => {
     }
 
     const closeButton = () => {
-        setModalOpen(false);
+        setModalOpen(prevState => !prevState);
     }
 
 
@@ -85,46 +81,46 @@ const DashboardPage = () => {
 
     return (
         <>
-                <div className={CssDashboardPage.body}>
-                    <div className={CssDashboardPage.sideNav}>
-                        <SideNav onButtonClick={handleButtonClick} />
-                    </div>
-                    <div className={CssDashboardPage.container}>
-                        {
-                            (activeBtn === 'dashboard') ?
-                                (<Dashboard />)
-                                : <></>
-                        }
-                        {
-                            (activeBtn === 'analytics') ?
-                                (
-                                    <Analytics data={data} />)
-                                : <></>
-                        }
-                        {
-                            // (activeBtn === 'createQuiz') ?
-                            //     (
-
-                            <Modal isOpen={modalOpen?onCloseq:modalOpen} onClose={onCloseq?closeModal:onCloseq} >
-                                {(continueBtn) ?
-                                    (
-                                       <QnA/>
-                                    )
-                                    : (
-                                        <QuizName closeButton={closeButton} />
-                                    )
-                                }
-                            </Modal>
-                            // )
-                            // : <></>
-                        }
-                        {
-                            (activeBtn === 'logout') ?
-                                (<Dashboard />)
-                                : <></>
-                        }
-                    </div>
+            <div className={CssDashboardPage.body}>
+                <div className={CssDashboardPage.sideNav}>
+                    <SideNav onButtonClick={handleButtonClick} />
                 </div>
+                <div className={CssDashboardPage.container}>
+                    {
+                        (activeBtn === 'dashboard') ?
+                            (<Dashboard />)
+                            : <></>
+                    }
+                    {
+                        (activeBtn === 'analytics') ?
+                            (
+                                <Analytics data={data} />)
+                            : <></>
+                    }
+                    {
+                        // (activeBtn === 'createQuiz') ?
+                        //     (
+
+                        <Modal isOpen={modalOpen ? onCloseq : modalOpen} onClose={onCloseq ? closeModal : onCloseq} >
+                            {(continueBtn) ?
+                                (
+                                    <QnA />
+                                )
+                                : (
+                                    <QuizName closeButton={closeButton} />
+                                )
+                            }
+                        </Modal>
+                        // )
+                        // : <></>
+                    }
+                    {
+                        (activeBtn === 'logout') ?
+                            (<Dashboard />)
+                            : <></>
+                    }
+                </div>
+            </div>
         </>
     )
 }
