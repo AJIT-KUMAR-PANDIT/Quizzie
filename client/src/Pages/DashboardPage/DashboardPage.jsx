@@ -7,9 +7,11 @@ import Modal from '../../Components/Modal/Modal';
 import QuizName from '../../Components/QuizName/QuizName';
 import ContextApiQuizModal from '../../ContextApi/QuizModal/ContextApiQuizModal';
 import QnA from '../../Components/QnA/QnA';
+import ContextModalClose from '../../ContextApi/ContextModalClose/ContextModalClose';
 
 const DashboardPage = () => {
 
+    const { close: onCloseq , updateClose: updateCloseq } = useContext(ContextModalClose);
 
     const [modalOpen, setModalOpen] = useState(false);
     
@@ -18,12 +20,19 @@ const DashboardPage = () => {
     
 
     const openModal = () => {
-        setModalOpen(true);
+        
+        if(onCloseq===false){
+            setModalOpen(false);
+        }else{
+            setModalOpen(true); 
+        }
+        
     };
 
     const closeModal = () => {
         setContinueBtn(false);
         setModalOpen(false);
+        updateCloseq(prev => !prev);
     };
 
 
@@ -41,7 +50,7 @@ const DashboardPage = () => {
                 break;
             case 'createQuiz':
                 // setActiveBtn(buttonName);
-                openModal();
+                openModal(); 
                 break;
             case 'logout':
                 setActiveBtn(buttonName);
@@ -96,7 +105,7 @@ const DashboardPage = () => {
                             // (activeBtn === 'createQuiz') ?
                             //     (
 
-                            <Modal isOpen={modalOpen} onClose={closeModal} >
+                            <Modal isOpen={modalOpen?onCloseq:modalOpen} onClose={onCloseq?closeModal:onCloseq} >
                                 {(continueBtn) ?
                                     (
                                        <QnA/>

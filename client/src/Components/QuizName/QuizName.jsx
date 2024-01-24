@@ -21,7 +21,6 @@ const QuizName = ({ closeButton, Continue }) => {
   const handlePollTBtnToggle = () => {
     setIsPollTBtnActive(true);
     setIsQABtnActive(false);
-    setShowPoll(true);
   };
 
   const handleClose = () => {
@@ -32,7 +31,12 @@ const QuizName = ({ closeButton, Continue }) => {
   };
 
   const handleContinue = () => {
-    updateData((prevData) => !prevData);
+   
+    if (isPollTBtnActive) {
+      setShowPoll(true); 
+    }else{
+      updateData((prevData) => !prevData);
+    }
   };
 
   return (
