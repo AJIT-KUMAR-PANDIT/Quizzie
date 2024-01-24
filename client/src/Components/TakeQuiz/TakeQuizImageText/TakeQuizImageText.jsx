@@ -16,7 +16,7 @@ const TakeQuizImageText = () => {
                 </div>
                 <div className={CssTakeQuizImageText.optionsList}>
                     <div className={CssTakeQuizImageText.optionsList1}>
-                        <button className={CssTakeQuizImageText.option}>options1<span style={{backgroundImage: "url(assets/img/QuizzieLoader_.svg)" , width: "136px" , height: "121px", backgroundRepeat: "no-repeat"}}></span></button>
+                        <button className={CssTakeQuizImageText.option}>options1<span style={{backgroundImage: "url(assets/img/QuizzieLoader311.svg)" , width: "136px" , height: "121px", backgroundRepeat: "no-repeat"}}></span></button>
                         <br/><br/>
                         <button className={CssTakeQuizImageText.option}>options1</button>
                     </div>

@@ -16,17 +16,17 @@ const TakeQuizImage = () => {
                 </div>
                 <div className={CssTakeQuizImage.optionsList}>
                     <div className={CssTakeQuizImage.optionsList1}>
-                        <button className={CssTakeQuizImage.option} style={{backgroundImage: "url(assets/img/QuizzieLoader_.svg)" , backgroundSize: "contain" , backgroundRepeat: "no-repeat"}}></button>
+                        <button className={CssTakeQuizImage.option} style={{backgroundImage: "url(assets/img/QuizzieLoader311.svg)" , backgroundSize: "contain" , backgroundRepeat: "no-repeat"}}></button>
                         <br/><br/>
-                        <button className={CssTakeQuizImage.option} style={{backgroundImage: "url(assets/img/QuizzieLoader_.svg)" , backgroundSize: "contain" , backgroundRepeat: "no-repeat"}}></button>
+                        <button className={CssTakeQuizImage.option} style={{backgroundImage: "url(assets/img/QuizzieLoader311.svg)" , backgroundSize: "contain" , backgroundRepeat: "no-repeat"}}></button>
                     </div>
                     <div>
                     <br/><br/>
                     </div>
                     <div className={CssTakeQuizImage.optionsList2}>
-                        <button className={CssTakeQuizImage.option} style={{backgroundImage: "url(assets/img/QuizzieLoader_.svg)" , backgroundSize: "contain" , backgroundRepeat: "no-repeat"}}></button>
+                        <button className={CssTakeQuizImage.option} style={{backgroundImage: "url(assets/img/QuizzieLoader311.svg)" , backgroundSize: "contain" , backgroundRepeat: "no-repeat"}}></button>
                         <br/><br/>
-                        <button className={CssTakeQuizImage.option} style={{backgroundImage: "url(assets/img/QuizzieLoader_.svg)" , backgroundSize: "contain" , backgroundRepeat: "no-repeat"}}></button>
+                        <button className={CssTakeQuizImage.option} style={{backgroundImage: "url(assets/img/QuizzieLoader311.svg)" , backgroundSize: "contain" , backgroundRepeat: "no-repeat"}}></button>
                     </div>
                 </div>
                 <br/><br/>
