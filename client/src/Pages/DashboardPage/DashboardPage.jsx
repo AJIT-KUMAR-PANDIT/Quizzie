@@ -101,7 +101,7 @@ const DashboardPage = () => {
                         // (activeBtn === 'createQuiz') ?
                         //     (
 
-                        <Modal isOpen={modalOpen ? onCloseq : modalOpen} onClose={onCloseq ? closeModal : onCloseq} >
+                        <Modal isOpen={modalOpen ? onCloseq : modalOpen} onClose={closeModal} >
                             {(continueBtn) ?
                                 (
                                     <QnA />
