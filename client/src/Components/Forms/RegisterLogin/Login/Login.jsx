@@ -49,7 +49,7 @@ const Login = () => {
         console.log(response.data);
         toast.success(response.data.message);
         localStorage.setItem('token', response.data.token);
-
+        localStorage.setItem('id', response.data._id);
         
             window.location.href = '/dashboard';
         
