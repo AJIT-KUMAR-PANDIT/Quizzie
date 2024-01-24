@@ -32,7 +32,7 @@ const DashboardPage = () => {
     const closeModal = () => {
         setContinueBtn(false);
         setModalOpen(false);
-        updateCloseq(prev => !prev);
+        updateCloseq(true);
     };
 
 
