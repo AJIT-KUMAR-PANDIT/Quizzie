@@ -11,6 +11,7 @@ import { useQuizContext } from '../../ContextApi/QuizContext/QuizContext';
 const QnA = () => {
     const { updateClose } = useContext(ContextModalClose);
     const { updateTimer } = useQuizContext();
+    const { quizData, updateQuestions } = useQuizContext();
     const [buttons, setButtons] = useState([1]);
     const [selectedOption, setSelectedOption] = useState('Text');
 

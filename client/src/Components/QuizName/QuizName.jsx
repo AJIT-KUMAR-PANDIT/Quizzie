@@ -11,6 +11,9 @@ const QuizName = ({ closeButton, Continue }) => {
   const baseUrl = Url();
 
   const { quizData } = useQuizContext();
+  
+  const [userId,setUserId] =  useState(localStorage.getItem("id"));
+  const [quizTitle,setQuizTitle] = useState("");
 
   const [isQABtnActive, setIsQABtnActive] = useState('Q & A');
   const [isPollTBtnActive, setIsPollTBtnActive] = useState(false);
@@ -33,6 +36,7 @@ const QuizName = ({ closeButton, Continue }) => {
   };
 
   const handleClose = () => {
+    setQuizTitle("");
     setIsQABtnActive(false);
     setIsPollTBtnActive(false);
     setShowPoll(false);
@@ -41,16 +45,17 @@ const QuizName = ({ closeButton, Continue }) => {
 
   const handleContinue = () => {
    console.log('Continue button clicked',quizData.timer);
-    if (isPollTBtnActive) {
-      setShowPoll(true); 
-    }else{
-      updateData((prevData) => !prevData);
+    if(quizTitle!==""){
+      if (isPollTBtnActive) {
+        setShowPoll(true); 
+      }else{
+        updateData((prevData) => !prevData);
+      }
     }
   };
 
 
-const [userId,setUserId] =  useState(localStorage.getItem("id"));
-const [quizTitle,setQuizTitle] = useState("");
+
 
 
 
@@ -61,7 +66,6 @@ const [quiz, setQuiz] = useState({
     quizTitle: "",
     quizType: "Q & A",
     timer: "Off",
-    impressions: 10,
     createDate: null,
     questionTitle: [
         "What is the capital of France?"
@@ -122,7 +126,7 @@ const handleSubmit = async (e) => {
   return (
     <div className={CssQuizName.container}>
       <div>
-        <input type="text" placeholder="   Quiz Name" value={quizTitle}  onChange={(e) => setQuizTitle(e.target.value)} className={`${CssQuizName.input} ${showPoll ? CssQuizName.inactive : ''}`} />
+        <input type="text" placeholder="   Quiz Name"  onChange={(e) => setQuizTitle(e.target.value)} className={`${CssQuizName.input} ${showPoll ? CssQuizName.inactive : ''}`} />
         <br />
         <br />
         <label className={`${CssQuizName.labelQuizT}  ${showPoll ? CssQuizName.inactive : ''}`}>Quiz Type</label>

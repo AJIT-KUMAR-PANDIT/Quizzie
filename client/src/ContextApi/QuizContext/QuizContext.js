@@ -97,6 +97,22 @@ export const QuizProvider = ({ children }) => {
     setQuizData((prevData) => ({ ...prevData, generatedUrl: newGenUrl }));
   };
 
+  const updateQuestions = (newQuestions) => {
+    setQuizData((prevData) => ({ ...prevData, questions: newQuestions }));
+  };
+
+  const getContextQuestion = (questionIndex) => {
+    return quizData.questions[questionIndex];
+  };
+
+  const updateContextQuestion = (questionIndex, updatedQuestion) => {
+    setQuizData((prevData) => {
+      const updatedQuestions = [...prevData.questions];
+      updatedQuestions[questionIndex] = updatedQuestion;
+      return { ...prevData, questions: updatedQuestions };
+    });
+  };
+
   const contextValue = {
     quizData,
     updateTimer,
@@ -109,7 +125,10 @@ export const QuizProvider = ({ children }) => {
     updateCorrectAnswerIndex,
     updateAttemptedCorrectly,
     updateAttemptedIncorrectly,
-    genUrl
+    genUrl,
+    updateQuestions, //update the entire questions array
+    getContextQuestion, //get specific question
+    updateContextQuestion, // update a specific question
   };
 
   
