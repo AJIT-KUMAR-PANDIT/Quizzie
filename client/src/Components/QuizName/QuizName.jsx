@@ -83,6 +83,7 @@ const [quiz, setQuiz] = useState({
     generatedUrl:" ",
 });
 
+// options:quizData.questions[0].options,
 
 const beforeSubmit = () => {
   setQuiz({
@@ -92,6 +93,9 @@ const beforeSubmit = () => {
     quizType: quizeT,
     timer: quizData.timer,
     createDate: new Date().getTime(),
+    questionTitle:quizData.questionTitle,
+    optionType:quizData.optionType,
+    options:quizData.options,
   })
 }
 
@@ -125,6 +129,7 @@ const handleSubmit = async (e) => {
 
   return (
     <div className={CssQuizName.container}>
+      {console.log("squizData.questionTitle", quizData.optionType)}
       <div>
         <input type="text" placeholder="   Quiz Name"  onChange={(e) => setQuizTitle(e.target.value)} className={`${CssQuizName.input} ${showPoll ? CssQuizName.inactive : ''}`} />
         <br />

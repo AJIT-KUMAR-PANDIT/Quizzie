@@ -11,13 +11,13 @@ import { useQuizContext } from '../../ContextApi/QuizContext/QuizContext';
 const QnA = () => {
     const { updateClose } = useContext(ContextModalClose);
     const { updateTimer } = useQuizContext();
-    const { quizData, updateQuestions } = useQuizContext();
+    const { quizData, updateQuestionTitle, updateOptions,updateOptionType } = useQuizContext();
     const [buttons, setButtons] = useState([1]);
     const [selectedOption, setSelectedOption] = useState('Text');
     const [optionsData, setOptionsData] = useState([]);
 
 
-    // Handling the option text change
+    // Handling the option text change and updateQuestionTitle
     const handleOptionTextChange = (id, text) => {
         console.log(`Option text value ${text}`);
         // Createing copy of optionsData
@@ -28,6 +28,8 @@ const QnA = () => {
 
         // Seting the state with the updated array
         setOptionsData(updatedOptionsData);
+
+        updateOptions(optionsData);
         console.log(`Option text value3 ${text}`);
         console.log(`Option text value2 ${optionsData}`);
 
@@ -39,6 +41,7 @@ const QnA = () => {
 
     const handleOptionChange = (event) => {
         setSelectedOption(event.target.value);
+        updateOptionType(event.target.value);
     };
 
     const handleImgClick = () => {
@@ -73,7 +76,7 @@ const QnA = () => {
                 </div>
                 <br />
                 <div>
-                    <input type="text" placeholder="Question" className={CssQnA.inputQuestion} />
+                    <input type="text" placeholder="Question" className={CssQnA.inputQuestion} onChange={e => updateQuestionTitle(e.target.value)} />
                     <br /><br />
                     <div className={CssQnA.optionType}>
                         <label className={CssQnA.text2}>
@@ -130,7 +133,7 @@ const QnA = () => {
                             <ImageOptions />
                         </div>
                         <div>
-                            <Timer />
+                            <Timer  onTimerClick={handleTimerClick}/>
                         </div>
                     </div>
                 )}
@@ -141,7 +144,7 @@ const QnA = () => {
                             <TextImageOptions />
                         </div>
                         <div>
-                            <Timer />
+                            <Timer onTimerClick={handleTimerClick} />
                         </div>
                     </div>
                 )}

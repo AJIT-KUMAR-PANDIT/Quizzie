@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 import CssImageOptions from './ImageOptions.module.css';
+import { useQuizContext } from '../../ContextApi/QuizContext/QuizContext';
+
 
 const ImageOptions = () => {
+
+  const { updateImgUrl } = useQuizContext();
+
   const [selectedOption, setSelectedOption] = useState('');
 
   const [options, setOptions] = useState([

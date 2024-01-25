@@ -9,7 +9,7 @@ const TakeQuiz = () => {
 
   const [count, setCount] = useState( localStorage.getItem("pageviews")||0);
 
-  const { updateTimer } = useQuizContext();
+  
 
   const impressions = () => {
     let value = count + 1;
