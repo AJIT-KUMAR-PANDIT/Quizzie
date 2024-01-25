@@ -5,12 +5,21 @@ import Timer from '../Timer/Timer';
 import ImageOptions from '../ImageOptions/ImageOptions';
 import TextImageOptions from '../TextImageOptions/TextImageOptions';
 import ContextModalClose from '../../ContextApi/ContextModalClose/ContextModalClose';
+import { useQuizContext } from '../../ContextApi/QuizContext/QuizContext';
+
 
 const QnA = () => {
     const { updateClose } = useContext(ContextModalClose);
+    const { updateTimer } = useQuizContext();
     const [buttons, setButtons] = useState([1]);
     const [selectedOption, setSelectedOption] = useState('Text');
 
+
+    const handleTimerClick = (buttonNumber) => {
+        console.log(`Button ${buttonNumber} clicked!`);
+        updateTimer(buttonNumber);
+      };
+    
     const handleOptionChange = (event) => {
         setSelectedOption(event.target.value);
     };
@@ -93,7 +102,7 @@ const QnA = () => {
                             <QnAOptions />
                         </div>
                         <div>
-                            <Timer />
+                            <Timer onTimerClick={handleTimerClick} />
                         </div>
                     </div>
                 )}

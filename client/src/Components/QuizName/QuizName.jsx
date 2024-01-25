@@ -4,10 +4,13 @@ import ContextApiQuizModal from '../../ContextApi/QuizModal/ContextApiQuizModal'
 import Poll from '../Poll/Poll';
 import {Url} from '../../utils/URL/Url';
 import axios from 'axios';
+import { useQuizContext } from '../../ContextApi/QuizContext/QuizContext';
 
 const QuizName = ({ closeButton, Continue }) => {
 
   const baseUrl = Url();
+
+  const { quizData } = useQuizContext();
 
   const [isQABtnActive, setIsQABtnActive] = useState('Q & A');
   const [isPollTBtnActive, setIsPollTBtnActive] = useState(false);
@@ -37,7 +40,7 @@ const QuizName = ({ closeButton, Continue }) => {
   };
 
   const handleContinue = () => {
-   
+   console.log('Continue button clicked',quizData.timer);
     if (isPollTBtnActive) {
       setShowPoll(true); 
     }else{
@@ -55,7 +58,7 @@ const [quizTitle,setQuizTitle] = useState("");
 
 const [quiz, setQuiz] = useState({
   _id: "12345132",
-    quizTitle: "My Quiz",
+    quizTitle: "",
     quizType: "Q & A",
     timer: "Off",
     impressions: 10,
@@ -83,7 +86,7 @@ const beforeSubmit = () => {
     _id: userId,
     quizTitle: quizTitle,
     quizType: quizeT,
-    timer: "Off",
+    timer: quizData.timer,
     createDate: new Date().getTime(),
   })
 }
@@ -119,7 +122,7 @@ const handleSubmit = async (e) => {
   return (
     <div className={CssQuizName.container}>
       <div>
-        <input type="text" placeholder="   Quiz Name" onChange={(e) => setQuizTitle(e.target.value)} className={`${CssQuizName.input} ${showPoll ? CssQuizName.inactive : ''}`} />
+        <input type="text" placeholder="   Quiz Name" value={quizTitle}  onChange={(e) => setQuizTitle(e.target.value)} className={`${CssQuizName.input} ${showPoll ? CssQuizName.inactive : ''}`} />
         <br />
         <br />
         <label className={`${CssQuizName.labelQuizT}  ${showPoll ? CssQuizName.inactive : ''}`}>Quiz Type</label>

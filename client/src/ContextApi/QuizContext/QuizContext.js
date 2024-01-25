@@ -120,7 +120,7 @@ export const QuizProvider = ({ children }) => {
 export const useQuizContext = () => {
   const context = useContext(QuizContext);
   if (!context) {
-    throw new Error('useQuizContext error: Context not found');
+    throw new Error('useQuizContext provider error: Context not found');
   }
   return context;
 };
