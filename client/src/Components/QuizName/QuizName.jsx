@@ -14,16 +14,17 @@ const QuizName = ({ closeButton, Continue }) => {
   const [showPoll, setShowPoll] = useState(false); // State to manage Poll component visibility
 
   const { updateData } = useContext(ContextApiQuizModal);
-
-
+  const [quizeT,setQuizeT] = useState("");
   
   const handleQABtnToggle = () => {
+    setQuizeT("Q & A");
     setIsQABtnActive(true);
     setIsPollTBtnActive(false);
     setShowPoll(false); // Hide the Poll component
   };
 
   const handlePollTBtnToggle = () => {
+    setQuizeT("Poll Type");
     setIsPollTBtnActive(true);
     setIsQABtnActive(false);
   };
@@ -45,27 +46,47 @@ const QuizName = ({ closeButton, Continue }) => {
   };
 
 
+const [userId,setUserId] =  useState(localStorage.getItem("id"));
+const [quizTitle,setQuizTitle] = useState("");
 
 
 
 // +++++++++++++++++++++++++++++++ quiz create backend connect start
 
 const [quiz, setQuiz] = useState({
-  userId: "12345",
-  quizTitle: "My Quiz",
-  quizType: "Q & A",
-  timer: "Off",
-  impressions: 10,
-  createDate: 82828,
-  questionTitle: "What is the capital of France?",
-  optionType: "Text",
-  options: "Paris London Berlin Madrid",
-  imgUrl: "",
-  correctAnswerIndex: 0,
-  attemptedCorrectly: 0,
-  attemptedIncorrectly: 0,
+  _id: "12345132",
+    quizTitle: "My Quiz",
+    quizType: "Q & A",
+    timer: "Off",
+    impressions: 10,
+    createDate: null,
+    questionTitle: [
+        "What is the capital of France?"
+    ],
+    optionType: "Text",
+    options: [
+        "Paris London Berlin Madrid"
+    ],
+    imgUrl: [
+        " "
+    ],
+    correctAnswerIndex: 0,
+    attemptedCorrectly: 0,
+    attemptedIncorrectly: 0,
+    generatedUrl:" ",
 });
 
+
+const beforeSubmit = () => {
+  setQuiz({
+    ...quiz,
+    _id: userId,
+    quizTitle: quizTitle,
+    quizType: quizeT,
+    timer: "Off",
+    createDate: new Date().getTime(),
+  })
+}
 
 
 const handleSubmit = async (e) => {
@@ -97,9 +118,8 @@ const handleSubmit = async (e) => {
 
   return (
     <div className={CssQuizName.container}>
-      {handleSubmit}
       <div>
-        <input type="text" placeholder="   Quiz Name" className={`${CssQuizName.input} ${showPoll ? CssQuizName.inactive : ''}`} />
+        <input type="text" placeholder="   Quiz Name" onChange={(e) => setQuizTitle(e.target.value)} className={`${CssQuizName.input} ${showPoll ? CssQuizName.inactive : ''}`} />
         <br />
         <br />
         <label className={`${CssQuizName.labelQuizT}  ${showPoll ? CssQuizName.inactive : ''}`}>Quiz Type</label>

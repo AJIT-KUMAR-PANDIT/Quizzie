@@ -2,8 +2,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const quizPollSchema = new Schema({
-  userId: {
-    type: String,
+  _id: {
+    type: Object,
+    require:true,
   },
   quizTitle: {
     type: String,
@@ -22,10 +23,11 @@ const quizPollSchema = new Schema({
     type: Number,
   },
   createDate: {
-    type: String,
+    type: Date,
+    default: Date.now,
   },
   questionTitle: {
-    type: String,
+    type: [String],
     required: true,
   },
   optionType: {
@@ -34,10 +36,10 @@ const quizPollSchema = new Schema({
     required: true,
   },
   options: {
-    type: String,
+    type: [String],
   },
   imgUrl: {
-    type: String,
+    type: [String],
   },
   correctAnswerIndex: {
     type: Number,
@@ -47,6 +49,9 @@ const quizPollSchema = new Schema({
   },
   attemptedIncorrectly: {
     type: Number,
+  },
+  generatedUrl: {
+    type: String,
   }
 });
 

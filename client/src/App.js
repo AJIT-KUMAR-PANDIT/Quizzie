@@ -5,19 +5,22 @@ import DashboardPage from './Pages/DashboardPage/DashboardPage';
 import ProviderQuizModal from './ContextApi/QuizModal/ProviderQuizModal';
 import ProviderModalClose from './ContextApi/ContextModalClose/ProviderModalClose';
 import TakeQuiz from './Pages/TakeQuiz/TakeQuiz';
+import { QuizProvider } from './ContextApi/QuizContext/QuizContext';
 
 function App() {
   return (
     <>
       <ProviderQuizModal>
         <ProviderModalClose>
-          <Router>
+          <QuizProvider>
+            <Router>
               <Routes>
                 <Route path="/" element={<RegisterLogin />} />
                 <Route path="/dashboard" element={<DashboardPage />} />
-                <Route path="/quiz" element={<TakeQuiz/>} />
+                <Route path="/quiz" element={<TakeQuiz />} />
               </Routes>
             </Router>
+          </QuizProvider>
         </ProviderModalClose>
       </ProviderQuizModal>
     </>
