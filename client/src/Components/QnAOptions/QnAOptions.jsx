@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import CssQnAOptions from './QnAOptions.module.css';
 
-const QnAOptions = () => {
+const QnAOptions = ({ onOptionTextChange }) => {
   const [selectedOption, setSelectedOption] = useState('');
 
   const [options, setOptions] = useState([
@@ -32,6 +32,9 @@ const QnAOptions = () => {
       option.id === id ? { ...option, text } : option
     );
     setOptions(updatedOptions);
+
+    // callback function to pass the updated text value
+    onOptionTextChange(id,text);
   };
 
   const handleDeleteOptionClick = (id) => {

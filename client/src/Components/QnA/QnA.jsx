@@ -14,13 +14,29 @@ const QnA = () => {
     const { quizData, updateQuestions } = useQuizContext();
     const [buttons, setButtons] = useState([1]);
     const [selectedOption, setSelectedOption] = useState('Text');
+    const [optionsData, setOptionsData] = useState([]);
 
 
+    // Handling the option text change
+    const handleOptionTextChange = (id, text) => {
+        console.log(`Option text value ${text}`);
+        // Createing copy of optionsData
+        const updatedOptionsData = [...optionsData];
+
+        // Updating text  index with the new text
+        updatedOptionsData[id] = text;
+
+        // Seting the state with the updated array
+        setOptionsData(updatedOptionsData);
+        console.log(`Option text value3 ${text}`);
+        console.log(`Option text value2 ${optionsData}`);
+
+    };
     const handleTimerClick = (buttonNumber) => {
         console.log(`Button ${buttonNumber} clicked!`);
         updateTimer(buttonNumber);
-      };
-    
+    };
+
     const handleOptionChange = (event) => {
         setSelectedOption(event.target.value);
     };
@@ -38,7 +54,7 @@ const QnA = () => {
     const handleCancelClick = () => {
         console.log('Cancel button clicked');
         updateClose(false);
-      };
+    };
 
     return (
         <div className={CssQnA.bodyQnA}>
@@ -100,7 +116,7 @@ const QnA = () => {
                 {selectedOption === 'Text' && (
                     <div id='qNaOptions' style={{ display: 'flex', justifyContent: 'space-between', width: '90%' }}>
                         <div>
-                            <QnAOptions />
+                            <QnAOptions onOptionTextChange={handleOptionTextChange} />
                         </div>
                         <div>
                             <Timer onTimerClick={handleTimerClick} />
