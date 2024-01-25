@@ -37,6 +37,12 @@ const ImageOptions = () => {
       option.id === id ? { ...option, text } : option
     );
     setOptions(updatedOptions);
+   
+  // Passing the updatedOptions array to updateImgUrl
+  const textArray = updatedOptions.map((option) => option.text);
+
+  // Passing the textArray to updateImgUrl
+  updateImgUrl(textArray);
   };
 
   const handleDeleteOptionClick = (id) => {

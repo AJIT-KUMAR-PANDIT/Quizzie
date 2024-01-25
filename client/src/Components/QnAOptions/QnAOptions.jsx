@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import CssQnAOptions from './QnAOptions.module.css';
+import { useQuizContext } from '../../ContextApi/QuizContext/QuizContext';
 
-const QnAOptions = ({ onOptionTextChange }) => {
+const QnAOptions = () => {
   const [selectedOption, setSelectedOption] = useState('');
 
+  const { updateOptions } = useQuizContext();
   const [options, setOptions] = useState([
     { id: 1, text: '', selected: false },
     { id: 2, text: '', selected: false }
@@ -32,11 +34,14 @@ const QnAOptions = ({ onOptionTextChange }) => {
       option.id === id ? { ...option, text } : option
     );
     setOptions(updatedOptions);
-
-    // callback function to pass the updated text value
-    onOptionTextChange(id,text);
+  
+    // Extracting only the 'text' property from each option
+    const textArray = updatedOptions.map((option) => option.text);
+  
+    // Passing the textArray to updateOptions
+    updateOptions(textArray);
   };
-
+  
   const handleDeleteOptionClick = (id) => {
     if (options.length > 2) {
       const updatedOptions = options.filter((option) => option.id !== id);

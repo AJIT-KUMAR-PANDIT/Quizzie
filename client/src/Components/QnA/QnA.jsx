@@ -18,22 +18,7 @@ const QnA = () => {
 
 
     // Handling the option text change and updateQuestionTitle
-    const handleOptionTextChange = (id, text) => {
-        console.log(`Option text value ${text}`);
-        // Createing copy of optionsData
-        const updatedOptionsData = [...optionsData];
 
-        // Updating text  index with the new text
-        updatedOptionsData[id] = text;
-
-        // Seting the state with the updated array
-        setOptionsData(updatedOptionsData);
-
-        updateOptions(optionsData);
-        console.log(`Option text value3 ${text}`);
-        console.log(`Option text value2 ${optionsData}`);
-
-    };
     const handleTimerClick = (buttonNumber) => {
         console.log(`Button ${buttonNumber} clicked!`);
         updateTimer(buttonNumber);
@@ -119,7 +104,7 @@ const QnA = () => {
                 {selectedOption === 'Text' && (
                     <div id='qNaOptions' style={{ display: 'flex', justifyContent: 'space-between', width: '90%' }}>
                         <div>
-                            <QnAOptions onOptionTextChange={handleOptionTextChange} />
+                            <QnAOptions />
                         </div>
                         <div>
                             <Timer onTimerClick={handleTimerClick} />

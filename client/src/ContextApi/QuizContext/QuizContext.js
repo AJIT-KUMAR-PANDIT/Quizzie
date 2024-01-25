@@ -29,16 +29,12 @@ export const QuizProvider = ({ children }) => {
     setQuizData((prevData) => ({ ...prevData, optionType: newOptionType }));
   };
 
-const updateOptions = (newOptions) => {
-  if (typeof newOptions === 'string') {
-    setQuizData((prevData) => ({
-      ...prevData,
-      options: newOptions,
-    }));
-  } else {
-    console.error('Invalid type for newOptions. Expected string.');
-  }
-};
+
+
+  const updateOptions = (newOptions) => {
+    setQuizData((prevData) => ({ ...prevData, options: newOptions }));
+  };
+  
   
 
   const updateImgUrl = (newImgUrl) => {

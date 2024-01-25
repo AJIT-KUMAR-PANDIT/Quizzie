@@ -96,6 +96,7 @@ const beforeSubmit = () => {
     questionTitle:quizData.questionTitle,
     optionType:quizData.optionType,
     options:quizData.options,
+    imgUrl:quizData.imgUrl,
   })
 }
 
@@ -129,7 +130,7 @@ const handleSubmit = async (e) => {
 
   return (
     <div className={CssQuizName.container}>
-      {console.log("squizData.questionTitle", quizData.optionType)}
+      {console.log("squizData.questionTitle", quizData.options)}
       <div>
         <input type="text" placeholder="   Quiz Name"  onChange={(e) => setQuizTitle(e.target.value)} className={`${CssQuizName.input} ${showPoll ? CssQuizName.inactive : ''}`} />
         <br />
