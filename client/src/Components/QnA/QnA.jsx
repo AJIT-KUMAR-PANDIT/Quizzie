@@ -41,6 +41,7 @@ const QnA = () => {
 
     const handleCancelClick = () => {
         console.log('Cancel button clicked');
+        window.location.reload();
         updateClose(false);
     };
 
