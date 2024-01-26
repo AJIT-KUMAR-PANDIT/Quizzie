@@ -5,8 +5,8 @@ const TextImageOptions = () => {
   const [selectedOption, setSelectedOption] = useState('');
 
   const [options, setOptions] = useState([
-    { id: 1, text: '', selected: false },
-    { id: 2, text: '', selected: false }
+    { id: 1, text: '', image: '', selected: false },
+    { id: 2, text: '', image: '', selected: false }
   ]);
 
   const handleOptionChange = (id) => {
@@ -21,7 +21,7 @@ const TextImageOptions = () => {
     if (options.length < 4) {
       const newOptions = [
         ...options,
-        { id: options.length + 1, text: '', selected: false }
+        { id: options.length + 1, text: '', image: '', selected: false }
       ];
       setOptions(newOptions);
     }
@@ -30,6 +30,13 @@ const TextImageOptions = () => {
   const handleOptionTextChange = (id, text) => {
     const updatedOptions = options.map((option) =>
       option.id === id ? { ...option, text } : option
+    );
+    setOptions(updatedOptions);
+  };
+
+  const handleOptionImageChange = (id, image) => {
+    const updatedOptions = options.map((option) =>
+      option.id === id ? { ...option, image } : option
     );
     setOptions(updatedOptions);
   };
@@ -69,8 +76,8 @@ const TextImageOptions = () => {
                 type="text"
                 placeholder={`IMAGE URL ${option.id}`}
                 className={`${CssTextImageOptions.inputOption} ${option.selected ? CssTextImageOptions.selected : ''}`}
-                value={option.text}
-                onChange={(e) => handleOptionTextChange(option.id, e.target.value)}
+                value={option.image}
+                onChange={(e) => handleOptionImageChange(option.id, e.target.value)}
               />
               {options.length > 2 && option.id > 2 && (
                 <div>
