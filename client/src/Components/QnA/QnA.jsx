@@ -28,11 +28,14 @@ const QnA = () => {
     const handleImgClick = () => {
         if (buttons.length < 5) {
             setButtons(prevButtons => [...prevButtons, prevButtons.length + 1]);
+            setClickedButtons(prevButtons => prevButtons + 1);
         }
+       
     };
 
     const handleDeleteButtonClick = (buttonNumber) => {
         setButtons(prevButtons => prevButtons.filter(btn => btn !== buttonNumber));
+        setClickedButtons(prevButtons => prevButtons -1);
     };
 
     const handleCancelClick = () => {
@@ -106,55 +109,54 @@ const QnA = () => {
                     <br />
                 </div>
 
+                <div style={{ display: 'flex', justifyContent: 'space-between', width: '90%' }}>
                 {buttons.map(buttonNumber => (
-                        <div key={buttonNumber} className={`${buttonNumber === clickedButtons ? CssQnA.show : CssQnA.hide}`}>
-                            {selectedOption === 'Text' && (
-                                <div
-                                    id={`qNaOptions${buttonNumber}`}
-                                    style={{ display: 'flex', justifyContent: 'space-between', width: '90%' }}
-                                    className={` ${buttonNumber === buttons ? CssQnA.show : CssQnA.hide}`}
-                                >
-                                    <div>
-                                        <QnAOptions />
-                                    </div>
-                                    <div>
-                                        <Timer onTimerClick={handleTimerClick} />
-                                    </div>
+                    <div key={buttonNumber} className={`${buttonNumber === clickedButtons ? CssQnA.show : CssQnA.hide}`}>
+                        {selectedOption === 'Text' && (
+                            <div
+                                id={`qNaOptions${buttonNumber}`}
+                                style={{ display: 'flex', justifyContent: 'space-between', width: '90%' }}
+                                className={` ${buttonNumber === buttons ? CssQnA.show : CssQnA.hide}`}
+                            >
+                                <div>
+                                    <QnAOptions />
                                 </div>
-                            )}
 
-                            {selectedOption === 'Image URL' && (
-                                <div id={`qNaImage${buttonNumber}`} style={{ display: 'flex', justifyContent: 'space-between', width: '90%' }}>
-                                    <div>
-                                        <ImageOptions />
-                                    </div>
-                                    <div>
-                                        <Timer onTimerClick={handleTimerClick} />
-                                    </div>
+                            </div>
+                        )}
+
+                        {selectedOption === 'Image URL' && (
+                            <div id={`qNaImage${buttonNumber}`} style={{ display: 'flex', justifyContent: 'space-between', width: '90%' }}>
+                                <div>
+                                    <ImageOptions />
                                 </div>
-                            )}
 
-                            {selectedOption === 'Text & Image URL' && (
-                                <div id={`qNaTimg${buttonNumber}`} style={{ display: 'flex', justifyContent: 'space-between', width: '90%' }}>
-                                    <div>
-                                        <TextImageOptions />
-                                    </div>
-                                    <div>
-                                        <Timer onTimerClick={handleTimerClick} />
-                                    </div>
+                            </div>
+                        )}
+
+                        {selectedOption === 'Text & Image URL' && (
+                            <div id={`qNaTimg${buttonNumber}`} style={{ display: 'flex', justifyContent: 'space-between', width: '90%' }}>
+                                <div>
+                                    <TextImageOptions />
                                 </div>
-                            )}
-                        </div>
-                ))}
 
-                        <br />
-                        <div style={{ display: 'flex', justifyContent: 'space-between', width: '90%' }}>
-                            <button className={CssQnA.button5} onClick={handleCancelClick}>Cancel</button>
-                            <button className={CssQnA.button3}> Create Quiz</button>
-                        </div>
+                            </div>
+                        )}
+
                     </div>
+                ))}
+                <div>
+                    <Timer onTimerClick={handleTimerClick} />
+                </div>
+                </div>
+                <br />
+                <div style={{ display: 'flex', justifyContent: 'space-between', width: '90%' }}>
+                    <button className={CssQnA.button5} onClick={handleCancelClick}>Cancel</button>
+                    <button className={CssQnA.button3}> Create Quiz</button>
+                </div>
+            </div>
         </div>
-            );
+    );
 };
 
-            export default QnA;
+export default QnA;
