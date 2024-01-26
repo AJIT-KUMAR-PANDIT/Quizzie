@@ -61,7 +61,7 @@ const QuizName = ({ closeButton, Continue }) => {
 
 // +++++++++++++++++++++++++++++++ quiz create backend connect start
 
-const [quiz, setQuiz] = useState([{
+const [quiz, setQuiz] = useState({
   _id: "12345132",
     qNo: 0,
     quizTitle: "",
@@ -82,38 +82,37 @@ const [quiz, setQuiz] = useState([{
     attemptedCorrectly: 0,
     attemptedIncorrectly: 0,
     generatedUrl:" ",
-}]);
+});
 
 // options:quizData.questions[0].options,
+
 const beforeSubmit = () => {
-  setQuiz([
+  setQuiz({
     ...quiz,
-    {
-      _id: userId,
-      quizTitle: quizTitle,
-      quizType: quizeT,
-      timer: quizData.timer,
-      createDate: new Date().getTime(),
-      questionTitle: quizData.questionTitle,
-      optionType: quizData.optionType,
-      options: quizData.options,
-      imgUrl: quizData.imgUrl,
-    },
-  ]);
-};
+    _id: userId,
+    quizTitle: quizTitle,
+    quizType: quizeT,
+    timer: quizData.timer,
+    createDate: new Date().getTime(),
+    questionTitle:quizData.questionTitle,
+    optionType:quizData.optionType,
+    options:quizData.options,
+    imgUrl:quizData.imgUrl,
+  })
+}
+
 
 const handleSubmit = async (e) => {
   e.preventDefault();
-
-  try {
-    const response = await axios.post(`${baseUrl}/createQuizPoll`, quiz);
-    console.log(response.data);
-  } catch (error) {
-    console.error(error.response.data);
-  }
-  console.log('Form submitted:', quiz);
-  // Reset the quiz array after submitting
-  setQuiz([]);
+  
+    try {
+      const response = await axios.post(`${baseUrl}/createQuizPoll`, quiz);
+      console.log(response.data);
+    } catch (error) {
+      console.error(error.response.data);
+    }
+    console.log('Form submitted:', quiz);
+  
 };
 
 
@@ -132,12 +131,7 @@ const handleSubmit = async (e) => {
 
   return (
     <div className={CssQuizName.container}>
-      {console.log("squizData.questionTitle", quizData.options)
-      }
-      {
-              localStorage.setItem("quizData", JSON.stringify(quiz))
-
-      }
+      {console.log("squizData.questionTitle", quizData.options)}
       <div>
         <input type="text" placeholder="   Quiz Name"  onChange={(e) => setQuizTitle(e.target.value)} className={`${CssQuizName.input} ${showPoll ? CssQuizName.inactive : ''}`} />
         <br />

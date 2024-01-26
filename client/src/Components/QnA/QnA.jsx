@@ -7,17 +7,14 @@ import TextImageOptions from '../TextImageOptions/TextImageOptions';
 import ContextModalClose from '../../ContextApi/ContextModalClose/ContextModalClose';
 import { useQuizContext } from '../../ContextApi/QuizContext/QuizContext';
 
-
 const QnA = () => {
     const { updateClose } = useContext(ContextModalClose);
-    const { updateTimer } = useQuizContext();
-    const { quizData, updateQuestionTitle, updateOptions,updateOptionType } = useQuizContext();
+    const { updateTimer, updateQuestionTitle, updateOptionType } = useQuizContext();
     const [buttons, setButtons] = useState([1]);
     const [selectedOption, setSelectedOption] = useState('Text');
-    const [optionsData, setOptionsData] = useState([]);
+    const [clickedButtons, setClickedButtons] = useState(1);
 
     // Handling the option text change and updateQuestionTitle
-
     const handleTimerClick = (buttonNumber) => {
         console.log(`Button ${buttonNumber} clicked!`);
         updateTimer(buttonNumber);
@@ -40,7 +37,6 @@ const QnA = () => {
 
     const handleCancelClick = () => {
         console.log('Cancel button clicked');
-        // window.location.reload();
         updateClose(false);
     };
 
@@ -49,8 +45,8 @@ const QnA = () => {
             <div>
                 <div style={{ display: 'flex' }}>
                     {buttons.map(buttonNumber => (
-                        <div key={buttonNumber} className={CssQnA.buttonContainer}>
-                            <button className={CssQnA.buttonAdded}>{buttonNumber}</button>
+                        <div key={buttonNumber} className={CssQnA.buttonContainer} >
+                            <button className={CssQnA.buttonAdded} onClick={() => setClickedButtons(buttonNumber)}>{buttonNumber}</button>
                             {buttonNumber !== 1 && (
                                 <span className={`${CssQnA.crossIcon} ${CssQnA.crossButton}`} onClick={() => handleDeleteButtonClick(buttonNumber)}>&#x2716;</span>
                             )}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -61,7 +57,16 @@ const QnA = () => {
                 </div>
                 <br />
                 <div>
-                    <input id='qTitle' type="text" placeholder="Question" className={CssQnA.inputQuestion} onChange={e => updateQuestionTitle(e.target.value)} />
+                    {buttons.map(buttonNumber => (
+                        <input
+                            key={buttonNumber}
+                            id={`qTitle${buttonNumber}`}
+                            type="text"
+                            placeholder={`Question ${buttonNumber}`}
+                            className={`${CssQnA.inputQuestion} ${buttonNumber === clickedButtons ? CssQnA.show : CssQnA.hide}`}
+                            onChange={e => updateQuestionTitle(e.target.value, buttonNumber)}
+                        />
+                    ))}
                     <br /><br />
                     <div className={CssQnA.optionType}>
                         <label className={CssQnA.text2}>
@@ -101,47 +106,55 @@ const QnA = () => {
                     <br />
                 </div>
 
-                {selectedOption === 'Text' && (
-                    <div id='qNaOptions' style={{ display: 'flex', justifyContent: 'space-between', width: '90%' }}>
-                        <div>
-                            <QnAOptions />
+                {buttons.map(buttonNumber => (
+                        <div key={buttonNumber} className={`${buttonNumber === clickedButtons ? CssQnA.show : CssQnA.hide}`}>
+                            {selectedOption === 'Text' && (
+                                <div
+                                    id={`qNaOptions${buttonNumber}`}
+                                    style={{ display: 'flex', justifyContent: 'space-between', width: '90%' }}
+                                    className={` ${buttonNumber === buttons ? CssQnA.show : CssQnA.hide}`}
+                                >
+                                    <div>
+                                        <QnAOptions />
+                                    </div>
+                                    <div>
+                                        <Timer onTimerClick={handleTimerClick} />
+                                    </div>
+                                </div>
+                            )}
+
+                            {selectedOption === 'Image URL' && (
+                                <div id={`qNaImage${buttonNumber}`} style={{ display: 'flex', justifyContent: 'space-between', width: '90%' }}>
+                                    <div>
+                                        <ImageOptions />
+                                    </div>
+                                    <div>
+                                        <Timer onTimerClick={handleTimerClick} />
+                                    </div>
+                                </div>
+                            )}
+
+                            {selectedOption === 'Text & Image URL' && (
+                                <div id={`qNaTimg${buttonNumber}`} style={{ display: 'flex', justifyContent: 'space-between', width: '90%' }}>
+                                    <div>
+                                        <TextImageOptions />
+                                    </div>
+                                    <div>
+                                        <Timer onTimerClick={handleTimerClick} />
+                                    </div>
+                                </div>
+                            )}
                         </div>
-                        <div>
-                            <Timer onTimerClick={handleTimerClick} />
+                ))}
+
+                        <br />
+                        <div style={{ display: 'flex', justifyContent: 'space-between', width: '90%' }}>
+                            <button className={CssQnA.button5} onClick={handleCancelClick}>Cancel</button>
+                            <button className={CssQnA.button3}> Create Quiz</button>
                         </div>
                     </div>
-                )}
-
-                {selectedOption === 'Image URL' && (
-                    <div id='qNaImage' style={{ display: 'flex', justifyContent: 'space-between', width: '90%' }}>
-                        <div>
-                            <ImageOptions />
-                        </div>
-                        <div>
-                            <Timer  onTimerClick={handleTimerClick}/>
-                        </div>
-                    </div>
-                )}
-
-                {selectedOption === 'Text & Image URL' && (
-                    <div id='qNaTimg' style={{ display: 'flex', justifyContent: 'space-between', width: '90%' }}>
-                        <div>
-                            <TextImageOptions />
-                        </div>
-                        <div>
-                            <Timer onTimerClick={handleTimerClick} />
-                        </div>
-                    </div>
-                )}
-
-                <br />
-                <div style={{ display: 'flex', justifyContent: 'space-between', width: '90%' }}>
-                    <button className={CssQnA.button5} onClick={handleCancelClick}>Cancel</button>
-                    <button className={CssQnA.button3}> Create Quiz</button>
-                </div>
-            </div>
         </div>
-    );
+            );
 };
 
-export default QnA;
+            export default QnA;
