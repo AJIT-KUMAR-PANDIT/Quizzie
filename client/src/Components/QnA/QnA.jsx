@@ -16,7 +16,6 @@ const QnA = () => {
     const [selectedOption, setSelectedOption] = useState('Text');
     const [optionsData, setOptionsData] = useState([]);
 
-
     // Handling the option text change and updateQuestionTitle
 
     const handleTimerClick = (buttonNumber) => {
@@ -41,7 +40,7 @@ const QnA = () => {
 
     const handleCancelClick = () => {
         console.log('Cancel button clicked');
-        window.location.reload();
+        // window.location.reload();
         updateClose(false);
     };
 
@@ -62,7 +61,7 @@ const QnA = () => {
                 </div>
                 <br />
                 <div>
-                    <input type="text" placeholder="Question" className={CssQnA.inputQuestion} onChange={e => updateQuestionTitle(e.target.value)} />
+                    <input id='qTitle' type="text" placeholder="Question" className={CssQnA.inputQuestion} onChange={e => updateQuestionTitle(e.target.value)} />
                     <br /><br />
                     <div className={CssQnA.optionType}>
                         <label className={CssQnA.text2}>
