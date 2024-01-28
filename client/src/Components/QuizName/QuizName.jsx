@@ -61,13 +61,13 @@ const QuizName = ({ closeButton, Continue }) => {
 
   // +++++++++++++++++++++++++++++++ quiz create backend connect start
 
-  const [quiz, setQuiz] = useState({
-    _id: "12345132",
+  const [quiz, setQuiz] = useState([{
+    userid: "12345132",
     qNo: 0,
     quizTitle: "",
     quizType: "Q & A",
     timer: "Off",
-    createDate: null,
+    createDate: new Date().getTime(),
     questionTitle: [
       "What is the capital of France?"
     ],
@@ -82,7 +82,7 @@ const QuizName = ({ closeButton, Continue }) => {
     attemptedCorrectly: 0,
     attemptedIncorrectly: 0,
     generatedUrl: " ",
-  });
+  }]);
 
 
 

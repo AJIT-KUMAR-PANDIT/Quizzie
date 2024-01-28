@@ -2,9 +2,13 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const quizPollSchema = new Schema({
-  _id: {
+  userId: {
     type: Object,
     require:true,
+  },
+  qNo: {
+    type: Number,
+    required: true,
   },
   quizTitle: {
     type: String,
