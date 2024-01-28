@@ -44,7 +44,7 @@ const QnA = () => {
         console.log('Cancel button clicked');
         updateClose(false);
     };
-
+ 
     const handleSubmit = async (e) => {
         e.preventDefault();
         updateUserId(localStorage.getItem("id"));
@@ -54,7 +54,7 @@ const QnA = () => {
         } catch (error) {
             console.error(error.response.data);
         }
-        console.log('Form submitted:', quizData.questions);
+        console.log('Form submitted:', quizData);
     };
 
     return (
@@ -99,7 +99,7 @@ const QnA = () => {
                     ))}
                     <br />
                     <br />
-                    <div className={CssQnA.optionType}>
+                    <div className={CssQnA.optionType} id='optionTypeId'>
                         <label className={CssQnA.text2}>
                             <input
                                 type="radio"
