@@ -7,36 +7,30 @@ import axios from 'axios';
 import { useQuizContext } from '../../ContextApi/QuizContext/QuizContext';
 
 const QuizName = ({ closeButton, Continue }) => {
-
   const baseUrl = Url();
-
-  const { quizData } = useQuizContext();
-
-  const [userId, setUserId] = useState(localStorage.getItem("id"));
-  const [quizTitle, setQuizTitle] = useState("");
-
-  const [isQABtnActive, setIsQABtnActive] = useState('Q & A');
-  const [isPollTBtnActive, setIsPollTBtnActive] = useState(false);
-  const [showPoll, setShowPoll] = useState(false); // State to manage Poll component visibility
-
+  const { quizData, updateUserId, updateQuizTitle, updateQuizeT } = useQuizContext();
   const { updateData } = useContext(ContextApiQuizModal);
-  const [quizeT, setQuizeT] = useState("Q & A");
+
+  const [isQABtnActive, setIsQABtnActive] = useState(true);
+  const [isPollTBtnActive, setIsPollTBtnActive] = useState(false);
+  const [showPoll, setShowPoll] = useState(false);
 
   const handleQABtnToggle = () => {
-    setQuizeT("Q & A");
+    updateQuizeT("Q & A");
     setIsQABtnActive(true);
     setIsPollTBtnActive(false);
-    setShowPoll(false); // Hide the Poll component
+    setShowPoll(false);
   };
 
   const handlePollTBtnToggle = () => {
-    setQuizeT("Poll Type");
+    updateQuizeT("Poll Type");
     setIsPollTBtnActive(true);
     setIsQABtnActive(false);
+    setShowPoll(true);
   };
 
   const handleClose = () => {
-    setQuizTitle("");
+    updateQuizTitle("");
     setIsQABtnActive(false);
     setIsPollTBtnActive(false);
     setShowPoll(false);
@@ -44,8 +38,7 @@ const QuizName = ({ closeButton, Continue }) => {
   };
 
   const handleContinue = () => {
-    console.log('Continue button clicked', quizData.timer);
-    if (quizTitle !== "") {
+    if (quizData.quizTitle !== "") {
       if (isPollTBtnActive) {
         setShowPoll(true);
       } else {
@@ -54,112 +47,19 @@ const QuizName = ({ closeButton, Continue }) => {
     }
   };
 
-
-
-
-
-
-  // +++++++++++++++++++++++++++++++ quiz create backend connect start
-
-  const [quiz, setQuiz] = useState([{
-    userid: "12345132",
-    qNo: 0,
-    quizTitle: "",
-    quizType: "Q & A",
-    timer: "Off",
-    createDate: new Date().getTime(),
-    questionTitle: [
-      "What is the capital of France?"
-    ],
-    optionType: "Text",
-    options: [
-      "Paris London Berlin Madrid"
-    ],
-    imgUrl: [
-      " "
-    ],
-    correctAnswerIndex: 0,
-    attemptedCorrectly: 0,
-    attemptedIncorrectly: 0,
-    generatedUrl: " ",
-  }]);
-
-
-
-  const beforeSubmit = () => {
-    setQuiz({
-      ...quiz,
-      _id: userId,
-      quizTitle: quizTitle,
-      quizType: quizeT,
-      timer: quizData.timer,
-      createDate: new Date().getTime(),
-      questionTitle: quizData.questionTitle,
-      optionType: quizData.optionType,
-      options: quizData.options,
-      imgUrl: quizData.imgUrl,
-    })
-  }
-
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-      const response = await axios.post(`${baseUrl}/createQuizPoll`, quiz);
-      console.log(response.data);
-    } catch (error) {
-      console.error(error.response.data);
-    }
-    console.log('Form submitted:', quiz);
-
+  const updateQuizTitleChange = (e) => {
+    updateQuizTitle(e);
   };
-
-
-
-  // +++++++++++++++++++++++++++++++ quiz create backend connect end
-
-
-
-
-
-
-
-
-
-
 
   return (
     <div className={CssQuizName.container}>
-      {
-        console.log("_id:", userId)
-      }
-      {
-        console.log("quizTitle:", quizTitle)
-      }
-      {
-        console.log("quizType:", quizeT)
-      }
-      {
-        console.log("timer:", quizData.timer)
-      }
-      {
-        console.log("createDate:", new Date().getTime())
-      }
-      {
-        console.log("questionTitle:", quizData.questionTitle)
-      }
-      {
-        console.log("optionType:", quizData.optionType)
-      }
-      {
-        console.log("options:", quizData.options)
-      }
-      {
-        console.log("imgUrl:", quizData.imgUrl)
-      }
       <div>
-        <input type="text" placeholder="   Quiz Name" onChange={(e) => setQuizTitle(e.target.value)} className={`${CssQuizName.input} ${showPoll ? CssQuizName.inactive : ''}`} />
+        <input
+          type="text"
+          placeholder="Quiz Name"
+          onChange={(e) => updateQuizTitleChange(e.target.value)}
+          className={`${CssQuizName.input} ${showPoll ? CssQuizName.inactive : ''}`}
+        />
         <br />
         <br />
         <label className={`${CssQuizName.labelQuizT}  ${showPoll ? CssQuizName.inactive : ''}`}>Quiz Type</label>
@@ -178,7 +78,6 @@ const QuizName = ({ closeButton, Continue }) => {
         </button>
         <br />
         <br />
-
 
         {showPoll && <Poll />}
 

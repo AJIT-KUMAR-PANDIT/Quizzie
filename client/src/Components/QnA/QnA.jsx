@@ -6,10 +6,20 @@ import ImageOptions from '../ImageOptions/ImageOptions';
 import TextImageOptions from '../TextImageOptions/TextImageOptions';
 import ContextModalClose from '../../ContextApi/ContextModalClose/ContextModalClose';
 import { useQuizContext } from '../../ContextApi/QuizContext/QuizContext';
+import { Url } from '../../utils/URL/Url';
+import axios from 'axios';
 
 const QnA = () => {
+
+    const baseUrl = Url();
+
+    
+    // const [quizTitle, setQuizTitle] = useState("");
+    // const [quizeT, setQuizeT] = useState("Q & A");
+
+
     const { updateClose } = useContext(ContextModalClose);
-    const { updateTimer, updateQuestionTitle, updateOptionType } = useQuizContext();
+    const { quizData, updateUserId, quizTitle, updateTimer, updateQuestionTitle, updateOptionType } = useQuizContext();
     const [buttons, setButtons] = useState([1]);
     const [selectedOption, setSelectedOption] = useState('Text');
     const [clickedButtons, setClickedButtons] = useState(1);
@@ -43,8 +53,147 @@ const QnA = () => {
         updateClose(false);
     };
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// +++++++++++++++++++++++++++++++ quiz create backend connect start
+
+const [quiz, setQuiz] = useState({
+    userId: "",
+    qNo: 0,
+    quizTitle: "",
+    quizType: "Q & A",
+    timer: "Off",
+    createDate: new Date().getTime(),
+    questionTitle: [
+      "What is the capital of France?"
+    ],
+    optionType: "Text",
+    options: [
+      "Paris London Berlin Madrid"
+    ],
+    imgUrl: [
+      " "
+    ],
+    correctAnswerIndex: 0,
+    attemptedCorrectly: 0,
+    attemptedIncorrectly: 0,
+    generatedUrl: " ",
+  });
+
+  
+
+  const beforeSubmit = () => {
+    updateUserId(localStorage.getItem("id"));
+    setQuiz([{
+      ...quiz,
+      userId: quizData.userId,
+      qNo: 0,
+      quizTitle: quizData.quizTitle,
+      quizType: quizData.quizeT,
+      timer: quizData.timer,
+      createDate: new Date().getTime(),
+      questionTitle: quizData.questionTitle,
+      optionType: quizData.optionType,
+      options: quizData.options,
+      imgUrl: quizData.imgUrl,
+    }])
+  }
+
+
+  const handleSubmit = async (e) => {
+    beforeSubmit();
+    e.preventDefault();
+
+    try {
+      const response = await axios.post(`${baseUrl}/createQuizPoll`, quiz);
+      console.log(response.data);
+    } catch (error) {
+      console.error(error.response.data);
+    }
+    console.log('Form submitted:', quiz);
+
+  };
+
+
+
+  // +++++++++++++++++++++++++++++++ quiz create backend connect end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     return (
         <div className={CssQnA.bodyQnA}>
+
+
+
+
+
+
+
+{
+        console.log("userid:", quizData.userId)
+      }
+      {
+        console.log("quizTitle:", quizData.quizTitle)
+      }
+      {
+        console.log("quizType:", quizData.quizeT)
+      }
+      {
+        console.log("timer:", quizData.timer)
+      }
+      {
+        console.log("createDate:", new Date().getTime())
+      }
+      {
+        console.log("questionTitle:", quizData.questionTitle)
+      }
+      {
+        console.log("optionType:", quizData.optionType)
+      }
+      {
+        console.log("options:", quizData.options)
+      }
+      {
+        console.log("imgUrl:", quizData.imgUrl)
+      }
+
+
+
+
+
+
+
+
+
             <div>
                 <div style={{ display: 'flex' }}>
                     {buttons.map(buttonNumber => (
@@ -152,7 +301,7 @@ const QnA = () => {
                 <br />
                 <div style={{ display: 'flex', justifyContent: 'space-between', width: '90%' }}>
                     <button className={CssQnA.button5} onClick={handleCancelClick}>Cancel</button>
-                    <button className={CssQnA.button3}> Create Quiz</button>
+                    <button className={CssQnA.button3} onClick={handleSubmit}> Create Quiz</button>
                 </div>
             </div>
         </div>

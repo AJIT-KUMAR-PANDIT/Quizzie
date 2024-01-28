@@ -3,6 +3,9 @@ import React, { createContext, useState, useContext } from 'react';
 const QuizContext = createContext();
 
 const initialQuizState = {
+  userId: "",
+  quizTitle: "",
+  quizeT: "Q & A",
   timer: 'Off',
   questionTitle: ["What is the capital of France?"],
   optionType: "Text",
@@ -16,6 +19,29 @@ const initialQuizState = {
 
 export const QuizProvider = ({ children }) => {
   const [quizData, setQuizData] = useState(initialQuizState);
+
+
+
+  const updateUserId = (newUserId) => {
+    setQuizData((prevData) => ({ ...prevData, userId: newUserId }));
+  };
+
+  const updateQuizTitle = (newQuizTitle) => {
+    setQuizData((prevData) => ({ ...prevData, quizTitle: newQuizTitle }));
+  };
+
+  const updateQuizeT = (newQuizeT) => {
+    setQuizData((prevData) => ({ ...prevData, quizeT: newQuizeT }));
+  };
+
+
+
+
+
+
+
+
+
 
   const updateTimer = (newTimer) => {
     setQuizData((prevData) => ({ ...prevData, timer: newTimer }));
@@ -59,6 +85,9 @@ export const QuizProvider = ({ children }) => {
 
   const contextValue = {
     quizData,
+    updateUserId,
+    updateQuizTitle,
+    updateQuizeT,
     updateTimer,
     updateQuestionTitle,
     updateOptionType,
