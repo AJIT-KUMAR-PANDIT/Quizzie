@@ -3,7 +3,7 @@ import React, { createContext, useState, useContext } from 'react';
 const QuizContext = createContext();
 
 const initialQuizState = {
-  userId: "",
+  userId: localStorage.getItem("id"),
   quizTitle: "",
   quizeT: "Q & A",
   timer: 'Off',
@@ -22,9 +22,9 @@ export const QuizProvider = ({ children }) => {
 
 
 
-  const updateUserId = (newUserId) => {
-    setQuizData((prevData) => ({ ...prevData, userId: newUserId }));
-  };
+  // const updateUserId = (newUserId) => {
+  //   setQuizData((prevData) => ({ ...prevData, userId: newUserId }));
+  // };
 
   const updateQuizTitle = (newQuizTitle) => {
     setQuizData((prevData) => ({ ...prevData, quizTitle: newQuizTitle }));
@@ -85,7 +85,7 @@ export const QuizProvider = ({ children }) => {
 
   const contextValue = {
     quizData,
-    updateUserId,
+    // updateUserId,
     updateQuizTitle,
     updateQuizeT,
     updateTimer,

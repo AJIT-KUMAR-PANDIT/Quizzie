@@ -47,7 +47,7 @@ const QnA = () => {
  
     const handleSubmit = async (e) => {
         e.preventDefault();
-        updateUserId(localStorage.getItem("id"));
+        // updateUserId(localStorage.getItem("id"));
         try {
             const response = await axios.post(`${baseUrl}/createQuizPoll`, { questions: quizData.questions });
             console.log(response.data);
@@ -94,7 +94,7 @@ const QnA = () => {
                             className={`${CssQnA.inputQuestion} ${
                                 buttonNumber === clickedButtons ? CssQnA.show : CssQnA.hide
                             }`}
-                            onChange={(e) => updateQuestionTitle(e.target.value, buttonNumber)}
+                            onChange={(e) => updateQuestionTitle([e.target.value])}
                         />
                     ))}
                     <br />
