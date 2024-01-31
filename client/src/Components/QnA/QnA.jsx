@@ -11,6 +11,7 @@ import axios from 'axios';
 
 const QnA = () => {
     const baseUrl = Url();
+    const [questions, setQuestions] = useState({ question1: '', question2: '' });
     const { updateClose } = useContext(ContextModalClose);
     const { quizData, updateUserId, updateTimer, updateQuestionTitle, updateOptionType } = useQuizContext();
     const [buttons, setButtons] = useState([1]);
@@ -57,6 +58,22 @@ const QnA = () => {
         console.log('Form submitted:', quizData);
     };
 
+
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+        setQuestions((prevInputs) => ({ ...prevInputs, [name]: value }));
+      };
+
+
+
+
+
+
+
+
+
+
+    
     return (
         <div className={CssQnA.bodyQnA}>
             <div>
@@ -94,7 +111,8 @@ const QnA = () => {
                             className={`${CssQnA.inputQuestion} ${
                                 buttonNumber === clickedButtons ? CssQnA.show : CssQnA.hide
                             }`}
-                            onChange={(e) => updateQuestionTitle([e.target.value])}
+                            value={questions[`question${buttonNumber + 2}`]}
+                            onChange={(e) => updateQuestionTitle(e.target.value)}
                         />
                     ))}
                     <br />

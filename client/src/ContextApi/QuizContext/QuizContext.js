@@ -7,9 +7,9 @@ const initialQuizState = {
   quizTitle: "",
   quizeT: "Q & A",
   timer: 'Off',
-  questionTitle: ["What is the capital of France?", "What is the capital of London?", "What is the capital of India?", "What is the capital of USA?", "What is the capital of Japan?"],
+  questionTitle: [""],
   optionType: "Text",
-  options: [["Paris","London","sss"],["Paris","London","sss"],["Paris","London","sss"],["Paris","London","sss"],["Paris","London","sss"]],
+  options: [["","",""]],
   imgUrl: [[" "," "," "],[" "," "," "],[" "," "," "],[" "," "," "],[" "," "," "]],
   correctAnswerIndex: 0,
   attemptedCorrectly: 0,
@@ -47,9 +47,19 @@ export const QuizProvider = ({ children }) => {
     setQuizData((prevData) => ({ ...prevData, timer: newTimer }));
   };
 
-  const updateQuestionTitle = (newTitle) => {
-    setQuizData((prevData) => ({ ...prevData, questionTitle: newTitle }));
+  // const updateQuestionTitle = (newTitle) => {
+  //   setQuizData((prevData) => ({ ...prevData, questionTitle: newTitle }));
+  // };
+
+
+  const updateQuestionTitle = (newValue, buttonNumber) => {
+    setQuizData((prevData) => {
+      const updatedQuestionTitle = [...prevData.questionTitle];
+      updatedQuestionTitle[buttonNumber - 1] = newValue;
+      return { ...prevData, questionTitle: updatedQuestionTitle };
+    });
   };
+  
 
   const updateOptionType = (newOptionType) => {
     setQuizData((prevData) => ({ ...prevData, optionType: newOptionType }));
