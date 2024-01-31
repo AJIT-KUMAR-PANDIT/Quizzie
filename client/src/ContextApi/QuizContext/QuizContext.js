@@ -10,7 +10,7 @@ const initialQuizState = {
   questionTitle: [""],
   optionType: "Text",
   options: [["","",""]],
-  imgUrl: [[" "," "," "],[" "," "," "],[" "," "," "],[" "," "," "],[" "," "," "]],
+  imgUrl: [[" "," "," "]],
   correctAnswerIndex: 0,
   attemptedCorrectly: 0,
   attemptedIncorrectly: 0,

@@ -1,6 +1,6 @@
 const QuizPoll = require('../models/quizPoll');
 
-// Controller to create a new quiz or poll
+// create a new quiz or poll
 const createQuizPoll = async (req, res) => {
   try {
     const quizPoll = new QuizPoll(req.body);
@@ -11,7 +11,7 @@ const createQuizPoll = async (req, res) => {
   }
 };
 
-// Controller to get all quizzes or polls
+//  get all quizzes or polls
 const getAllQuizPolls = async (req, res) => {
   try {
     const quizzesPolls = await QuizPoll.find();
@@ -21,7 +21,7 @@ const getAllQuizPolls = async (req, res) => {
   }
 };
 
-// Controller to get a specific quiz or poll by ID
+// get specific quiz or poll by ID
 const getQuizPollById = async (req, res) => {
   try {
     const quizPoll = await QuizPoll.findById(req.params.id);
@@ -34,7 +34,7 @@ const getQuizPollById = async (req, res) => {
   }
 };
 
-// Controller to update a quiz or poll by ID
+// update a quiz or poll by ID
 const updateQuizPollById = async (req, res) => {
   try {
     const quizPoll = await QuizPoll.findByIdAndUpdate(req.params.id, req.body, {
@@ -49,7 +49,7 @@ const updateQuizPollById = async (req, res) => {
   }
 };
 
-// Controller to delete a quiz or poll by ID
+//  delete a quiz or poll by ID
 const deleteQuizPollById = async (req, res) => {
   try {
     const quizPoll = await QuizPoll.findByIdAndRemove(req.params.id);
